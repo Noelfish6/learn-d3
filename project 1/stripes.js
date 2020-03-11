@@ -37,6 +37,17 @@ function graph(data, id){
 		.attr('width', data.length * stripeWidth)
 		.attr('height', stripeHeight)
 
-	
+	// create the stripes, and add attributes 
+	let stripes = svg.selectAll("rect") // select the rect which is not created yet
+		.data(data) 					// bind these empty rects to the data in the data array, then we have a join
+		.enter()						// create placeholder elements, rather than use a loop function
+		.append("rect") 				// append a rect to the empty selection
+		.attr('width', stripeWidth)
+		.attr('height', stripeHeight)
+		.attr('x', 10)
+		.attr('y', 10)
+
 }
+
+
 
