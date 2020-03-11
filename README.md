@@ -37,10 +37,10 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 ## Day 4：在容器内添加rect，且设置属性
 今天的任务是在容器（svg）内添加绑定数据的rect（用来绘制气温颜色的方块）。首先是选择所有尚未创建的rect，然后指定数据（因为在graph里面，数据为data），然后使用enter方法将rect与data关联起来。此时已经创建好绑定数据的rect，这个过程类似loop方法（将每一条数据依序与每一个方块绑定）。然后继续设置这些方块的长宽与位置。
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/4-1.png)
 
 已经生成了所有的rect，等待更多的可视化设置：
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/4-2.png)
 
 
