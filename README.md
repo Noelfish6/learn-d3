@@ -48,9 +48,9 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 
 这个设置方块位置的代码目前对我而言有个困惑，为什么D3会知道（d，i）的d是data且i是index，是因为自动继承了graph funciton的设置？
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/5-1.png)
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/5-2.png)
 
 
 ### Day 6：设置数据到颜色的映射（domain&range）
@@ -61,15 +61,15 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 
 **linearScaleForData** 用来处理数据到颜色范围的映射，使用的scale是scaleLinear，并用d3.min与d3.max来找出数据的极大极小值，然后再用range去映射到colors。
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/6-1.png)
 
 在最后 stripes 的样式设置，style的填充方式是先使用 Math.round 将 **linearScaleForData(d.avg)** 从 floating numbers 变成 integer，然后再放入colors[]里，就完成了数据到可视化的映射过程。
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/6-2.png)
 
 成果：
 
-![]()
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/6-3.png)
 
 
 困惑：
