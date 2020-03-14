@@ -1,6 +1,5 @@
 // read the data
 function readData(file, id) {
-	console.log("read the data");
 
 	d3.csv(file, processData) // promise object, has a then function
 		.then((data) => graph(data, id)) // callback, do something with arrary in d
@@ -54,16 +53,16 @@ function graph(data, id){
 	let stripes = svg.selectAll("rect") // select the rect which is not created yet
 		.data(data) 					// bind these empty rects to the data in the data array, then we have a join
 		.enter()						// create placeholder elements, rather than use a loop function
-		.append("rect") 				// append a rect to the empty selection
+		.append('rect') 				// append a rect to the empty selection
 		.attr('width', stripeWidth)
 		.attr('height', stripeHeight)
 		.attr('x', (d, i) => i * stripeWidth) // arrow function is same as "function(d, i){return i * stripeWidth;}" 
 		.attr('y', 10)
-		.style("fill", (d, i) => colors[Math.round(linearScaleForData(d.avg))]); 
+		.style("fill", (d, i) => colors[Math.round(linearScaleForData(d.avg))])
 		// d.avg is defined by the map function above
 		// the data which is going to be put in the scale must be integer, not floating numbers, so use Math.round to solve it
+		// colors[data] will generate the data visualization, colors(data) won't
+		.on('mouseover', (d,i) => console.log(d.year,d.avg));
+
+
 }
-
-
-// floating numbers, not integer
-

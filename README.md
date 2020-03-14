@@ -78,4 +78,8 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 2. the data which is going to be put in the scale must be integer, why?
 3. colors[data] will generate the data visualization, colors(data) won't, why?
 
+### Day 7：复习
+梳理这个项目的简要代码逻辑：在 html 嵌入 readData function，并在 js 里展开 readData 的架构。readData 由两个 callback 组成：processData 与 graph。processData 用来转换数据格式，从string 到 array，且筛选出要绘制的数据。graph 用来创建与设置可视化的元素。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/7.jpeg)
 
