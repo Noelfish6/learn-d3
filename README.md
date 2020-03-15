@@ -24,6 +24,10 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/1.png)
 
+**learning resources**
+How arrow functions work in JavaScript
+https://www.youtube.com/watch?v=dlnVLfwqBBQ
+
 ### Day 2：数据处理
 昨天完成了对的数据初步读取，今天需要截取出要呈现在可视化上的数据：每一年的平均温度与该年年份。原始数据不必要的东西较多，这时候可以定义变量，然后限定条件，并返回在限定条件下的数据，例如此范例，定义了year与avg两个变量，并对avg的数据限定为“J-D”这个当年分的平均气温：
 
@@ -82,4 +86,20 @@ https://www.yuque.com/u34723/kdqsue/wrbzgy
 梳理这个项目的简要代码逻辑：在 html 嵌入 readData function，并在 js 里展开 readData 的架构。readData 由两个 callback 组成：processData 与 graph。processData 用来转换数据格式，从string 到 array，且筛选出要绘制的数据。graph 用来创建与设置可视化的元素。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/7.jpeg)
+
+## 项目 2：D3.js In Action —— Ch2. Information visualization data flow
+
+### Day 8: 2.1 Working with data - 2.1.1 loading data
+1. ```d3.csv()```跟```d3.json()```使用相同的格式来读取数据：先定义数据档案的路径，再定义回调函数。
+```d3.csv("cities.csv", (error,data) => {console.log(error,data)});```
+```d3.csv("cities.csv", d => console.log(d));```
+
+2. ```d3.xhr```包括了```d3.csv()```、```d3.json()```、```d3.json```等等，适合用于数据为动态更新的api（异步读取数据），若数据为静止不变的，例如地图，可以之间在script里面引用，或是用import（Node）、require（ES2015）。*备注：在对文件进行请求时，XHR代表当前页面执行时的网络请求（ajax请求），JS代表当前页面加载的JS文件。*
+
+因为D3以及改版到V5，上述的异步回调方法稍旧，已改为使用promises:
+```d3.csv("file.csv").then(function(data){console.log(data);});```
+
+Promises学习：
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+	
 
