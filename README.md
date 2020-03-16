@@ -90,16 +90,43 @@ https://www.youtube.com/watch?v=dlnVLfwqBBQ
 ## 项目 2：D3.js In Action —— Ch2. Information visualization data flow
 
 ### Day 8: 2.1 Working with data - 2.1.1 loading data
-1. ```d3.csv()```跟```d3.json()```使用相同的格式来读取数据：先定义数据档案的路径，再定义回调函数。
+1. ```d3.csv```跟```d3.json```使用相同的格式来读取数据：先定义数据档案的路径，再定义回调函数。
 ```d3.csv("cities.csv", (error,data) => {console.log(error,data)});```
 ```d3.csv("cities.csv", d => console.log(d));```
 
-2. ```d3.xhr```包括了```d3.csv()```、```d3.json()```、```d3.json```等等，适合用于数据为动态更新的api（异步读取数据），若数据为静止不变的，例如地图，可以之间在script里面引用，或是用import（Node）、require（ES2015）。*备注：在对文件进行请求时，XHR代表当前页面执行时的网络请求（ajax请求），JS代表当前页面加载的JS文件。*
+2. ```d3.xhr```包括了```d3.csv```、```d3.json```、```d3.json```等等，适合用于数据为动态更新的api（异步读取数据），若数据为静止不变的，例如地图，可以之间在script里面引用，或是用import（Node）、require（ES2015）。*备注：在对文件进行请求时，XHR代表当前页面执行时的网络请求（ajax请求），JS代表当前页面加载的JS文件。*
 
-因为D3以及改版到V5，上述的异步回调方法稍旧，已改为使用promises:
+因为D3已经改版到V5，上述的异步回调方法稍旧，需改为使用promises:
 ```d3.csv("file.csv").then(function(data){console.log(data);});```
 
-Promises学习：
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+### Day 9：Promises 学习
+来源1：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
+
+来源2：https://es6.ruanyifeng.com/#docs/promise
+
+因为 D3.js V5 在数据处理上改用 promises，故今天的任务是大致了解 promises 的概念。
+
+原始的 callback 函数：
+
+```function successCallback(result) {
+  console.log("Audio file ready at URL: " + result);
+}
+
+function failureCallback(error) {
+  console.error("Error generating audio file: " + error);
+}
+
+createAudioFileAsync(audioSettings, successCallback, failureCallback);```
+
+
+使用 promises 简化后：
+
+```createAudioFileAsync(audioSettings).then(successCallback, failureCallback);```
+
+或是更简洁表示：
+
+```const promise = createAudioFileAsync(audioSettings); 
+promise.then(successCallback, failureCallback);```
+
 	
 
