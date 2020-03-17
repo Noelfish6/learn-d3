@@ -116,17 +116,32 @@ function failureCallback(error) {
   console.error("Error generating audio file: " + error);
 }
 
-createAudioFileAsync(audioSettings, successCallback, failureCallback);```
+createAudioFileAsync(audioSettings, successCallback, failureCallback);
 
 
 使用 promises 简化后：
 
-```createAudioFileAsync(audioSettings).then(successCallback, failureCallback);```
+createAudioFileAsync(audioSettings).then(successCallback, failureCallback);
 
 或是更简洁表示：
 
-```const promise = createAudioFileAsync(audioSettings); 
-promise.then(successCallback, failureCallback);```
+const promise = createAudioFileAsync(audioSettings); 
+promise.then(successCallback, failureCallback);
 
+```
 	
+### Day 10：2.1 Working with data - 2.1.2 Formatting data
+
+这个章节主要讨论数据的 scale 处理，以 categorical data 为例：
+
+```
+var sampleArray = [423,124,66,424,58,10,900,44,1];
+var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
+
+```
+从原始数据 sampleArray 到 [0, 1, 2] 如何映射呢？首先使用```scaleQuantile```并将数据```domain```（d即data）结合，最后告诉代码要映射的范围```range```（r即result）。
+
+例子： ``` qScale(1211) ```为2。
+
+
 
