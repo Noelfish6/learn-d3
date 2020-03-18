@@ -130,7 +130,7 @@ promise.then(successCallback, failureCallback);
 
 ```
 	
-### Day 10：2.1 Working with data - 2.1.2 Formatting data
+### Day 10：2.1 Working with data - 2.1.2 Formatting data - categorical data
 
 这个章节主要讨论数据的 scale 处理，以 categorical data 为例：
 
@@ -142,6 +142,19 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 从原始数据 sampleArray 到 [0, 1, 2] 如何映射呢？首先使用```scaleQuantile```并将数据```domain```（d即data）结合，最后告诉代码要映射的范围```range```（r即result）。
 
 例子： ``` qScale(1211) ```为2。
+
+### Day 11：2.1 Working with data - 2.1.2 Formatting data - nesting & extent
+
+继续昨天的 scale 主题，探讨对关系型数据进行分类（nest）与计算数据的极大极小值（extent）。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/11-1.png)
+
+```nest```的```key```指定数据字段，用于分类。例如```key(d => d.user)```即以```user```的数据字段来分类数据。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/11-2.png)
+
+疑问：不懂```el => +el.population``` + 含义，类似for loop？
+
 
 
 

@@ -1,21 +1,31 @@
-// for (i = 0; i<10; i++){
-//     console.log(i);
-// }
 
-// d3.csv("cities.csv", (error, d) => console.log(error, d));
+// old method: callback
 
-// d3.csv("cities.csv", data => console.log("data"));
-// d3.json("tweets.json", data => console.log("data"));
+	// d3.csv("cities.csv", data => console.log("data"));
+	// d3.json("tweets.json", data => console.log("data"));
 
-d3.json("tweets.json").then(function(data) {console.log(data);});
-d3.csv("cities.csv").then(function(data) {console.log(data)});
+// new method: promises
 
-// d3.csv("cities.csv", data => {
-// d3.min(data, el => +el.population);
-// d3.max(data, el => +el.population);
-// d3.mean(data, el => +el.population);
-// });
+	// d3.json("tweets.json").then(function(data) {console.log(data);});
+	// d3.csv("cities.csv").then(function(data) {console.log(data)});
 
 
+// nesting
+	d3.json("tweets.json").then(function(data){
+		let tweetData = data.tweets;
+		let nestedTweets = d3.nest()
+			.key(d => d.user)
+			.entries(tweetData);
+
+		console.log(nestedTweets); // after nesting
+		console.log(tweetData); // before nesting
+	});
+
+
+// extent
+	d3.csv("cities.csv").then(function(data){
+		let extent = d3.extent(data, el => +el.population);
+		console.log(extent);
+	});
 
 
