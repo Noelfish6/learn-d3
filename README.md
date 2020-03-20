@@ -155,6 +155,13 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 
 疑问：不懂```el => +el.population``` + 含义，类似for loop？
 
+### Day 12：2.2 Data-binding - 2.2.1. Selections and binding
+
+练习D3的选择器（selection）与数据绑定（binding），使用书本的代码时遇到了未知的问题，目前还不知道如何解决。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/12-1.png)
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/12-2.png)
 
 
 
