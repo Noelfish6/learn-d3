@@ -164,4 +164,10 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/12-2.png)
 
 
+### Day 13：Debugging
+
+昨天的已解决，改成promises即可：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/12-3.png)
+
 
