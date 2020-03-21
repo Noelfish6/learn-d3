@@ -170,4 +170,9 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/12-3.png)
 
+### Day 14：2.3. Data presentation style, attributes, and content
+
+目前遇到的问题是，console没有报错，但图没有显示，还不知道问题在哪里。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/14.png)
 
