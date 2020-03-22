@@ -183,6 +183,7 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 
 ### Day 15：Basic JS - Program Sturcture
 简要复习 while loop 与 for loop。
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/15.png)
 
 
 
