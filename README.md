@@ -176,3 +176,13 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/14.png)
 
+
+## 项目3：D3 course 2018 by Curran
+
+鉴于项目二的书籍使用较旧版本的D3，在代码转换上稍微麻烦，改用另外一个线上免费课程。
+
+### Day 15：Basic JS - Program Sturcture
+简要复习 while loop 与 for loop。
+
+
+
