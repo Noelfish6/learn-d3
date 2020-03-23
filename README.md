@@ -186,4 +186,18 @@ var qScale = d3.scaleQuantile().domain(sampleArray).range([0,1,2]);
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/15.png)
 
 
+### Day 16：Basic JS - Defining a function
+
+```
+const square = function(x) { return x*x };
+```
+等同于
+```
+function square(x){return x*x;}
+```
+等同于
+```
+square = (x) => x*x;
+```
+使用 arrow function 时，若有多个 statement，需要使用{}。
 
