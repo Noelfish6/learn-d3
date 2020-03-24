@@ -201,3 +201,26 @@ square = (x) => x*x;
 ```
 使用 arrow function 时，若有多个 statement，需要使用{}。
 
+### Day 17：Basic JS - Recursion
+Recursion：对自我进行调用的函数。
+
+```
+function power(base, exponent) {
+
+if (exponent == 0){return 1;}
+else {return base * power(base, exponent -1)}
+
+}
+
+```
+
+另外一个例子：
+
+```
+const factorial = n =>
+n === 0
+  ? 1
+  : n * factorial(n - 1);
+```
+
+
