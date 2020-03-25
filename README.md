@@ -223,4 +223,52 @@ n === 0
   : n * factorial(n - 1);
 ```
 
+### Day 18：Data structures - object and array
+Object 由 {} 组成，array 由 [] 组成。Object 可以被包含在 array 里面，例如：
+
+```
+[{name: 'Accord'}, {name: 'Fiat'}]
+```
+
+若要在 array 里面添加新的 object，可以使用 push 方法：
+
+```
+cars.push({
+make: 'Nissan',
+model: 'Leaf',
+year: 2012,
+price: 1800
+});
+```
+
+若想要打印 cars 里面所有的 price，可以使用 for loop：
+
+```
+for(let i = 0; i < cars.length; i++){
+const car = cars[i];
+console.log(cars.price);
+}
+
+```
+
+疑问：为啥 () 里面的 i 是用 let，但 {} 里面的 car 是用 const？
+
+另外，也可以使用 forEach 来打印 cars 里面所有的 price：
+
+```
+const printCarPrice = car => {
+	console.log(car.price);
+
+}; // undefined
+
+cars.forEach(printCarPrice); // 打印所有的 price
+
+```
+
+
+
+
+
+
+
 
