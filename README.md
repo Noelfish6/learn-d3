@@ -265,10 +265,38 @@ cars.forEach(printCarPrice); // 打印所有的 price
 
 ```
 
+### Day 19：Asynchronous programming
+以下面的代码来解释何谓异步编程：
 
+```
+setTimeout(() => console.log("Tick"), 1000);
+```
+setTimeout 可以指定后面代码的执行时间，例如 console.log 打印 “Tick” 的时间是 1 秒。
 
+上述的方法是 callback，新版 JS 已改用 promises：
 
+```
+let myPromose = new Promise((resolve, reject) => {
+	setTimeout(() => resolve(), 2000);
+});
 
+myPromise.then(() => {
+console.log('Promise resolved');
+});
+```
+另外一个例子：
 
+```
+let waitSeconds = numSeconds => new Promise(resolve => {
+	const message = `${numSeconds} seconds have passed!`;
+	setTimeout(() => resolve(message), numSeconds * 1000);
+})
+```
 
+```
+waitSeconds(2)
+	.then(message => console.log(message));
+
+// 2 seconds have passed!
+```
 
