@@ -321,3 +321,9 @@ console.log(d3);
 ```
 
 之前在调用d3时一直忽略这个简单的方法。
+
+### Day 21：Draw a circle
+今天的教程主要是使用 webpack 来执行 d3 代码，但犹豫教程是在线上的代码环境执行，不用安装 webpack，但我在本地环境下需要使用 webpack，目前卡在不知道如何在本地部署 webpack。不过目前在 bundle.js 写代码还是可以顺利执行。
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/21-1.png)
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/21-2.png)
+
