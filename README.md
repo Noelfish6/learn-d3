@@ -300,3 +300,24 @@ waitSeconds(2)
 // 2 seconds have passed!
 ```
 
+### Day 20：快速读取 D3
+今天的内容较为简单，在html里面测试是否成功读取d3文件，在html里面使用如下的代码：
+
+```
+<!doctype html>
+<html>
+<head>
+<title>Warming Stripes</title>
+<meta charset="utf-8">
+<script type="text/javascript" src="./d3.js"></script>
+<script>
+console.log(d3);
+</script>
+</head>
+<body>
+	<div id="land"></div>
+</body>
+</html>
+```
+
+之前在调用d3时一直忽略这个简单的方法。
