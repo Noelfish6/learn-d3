@@ -27,14 +27,14 @@
 		.attr("fill", "black");
 
 	const g = svg.append("g")
-		.attr("transform", `translate(${width}, ${height/4})`)
+		.attr("transform", `translate(${width}, ${height/3.5})`)
 
 	const mouth = g.append("path")
 		.attr("d", d3.arc()({  // in the tutorial, there is no d3 before arc; but in this code, if there is no d3, it will show an error, why?
-			innerRadius: 80,
-			outerRadius: 100,
-			startAngle: 0,
-			endAngle: Math.PI
+			innerRadius: 0,
+			outerRadius: 30,
+			startAngle: Math.PI/2,
+			endAngle: Math.PI*3/2
 		}))
 
 }(d3));

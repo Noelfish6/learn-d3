@@ -332,3 +332,8 @@ console.log(d3);
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/22-1.png)
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/22-2.png)
 
+### Day 23：Draw a circle - part 3
+基于前两天的基础，完成了笑脸的绘制。
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/23-1.png)
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/23-2.png)
+
