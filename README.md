@@ -337,3 +337,9 @@ console.log(d3);
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/23-1.png)
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/23-2.png)
 
+### Day 24：Making a bar chart - part 1
+今天主要的任务是清洗数据。从联合国网站上下载人口数据，并只保留2020年的数据与各国名称，其余多余的内容删除，并转换成csv格式。
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/24-1.png)
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/24-2.png)
+
+
