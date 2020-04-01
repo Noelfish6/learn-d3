@@ -342,4 +342,9 @@ console.log(d3);
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/24-1.png)
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/24-2.png)
 
+### Day 25：Making a bar chart - part 2
+读取数据是今天的任务。另外，因为本地端运行代码需要 webpack，所以今天开始改用作者的线上工具来运行代码（已经整合了webpack），不然在学习过程中会一直遇到问题。之后有时间再去部署本地的 webpack。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/25.png)
+
 
