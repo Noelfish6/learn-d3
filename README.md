@@ -347,4 +347,18 @@ console.log(d3);
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/25.png)
 
+### Day 26：Making a bar chart - part 3
+目前读取到的数据格式为 string，但我们需要它为 number 格式。解决的方法是使用 forEach 对所有的数据进行处理，代码如下：
+
+```
+csv("population.csv").then(data => {
+  data.forEach(d => {
+  	d.population = +d.population;
+  });
+	console.log(data);
+});
+
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/26.png)
 
