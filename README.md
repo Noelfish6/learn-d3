@@ -362,3 +362,39 @@ csv("population.csv").then(data => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/26.png)
 
+### Day 27：Making a bar chart - part 4
+这几天的大任务是为每一个数据生成方块，今天的小任务是先把方块画出来。需要使用 D3 的 data join 方法。
+
+先生成一个 render 函数，并在里面指定方块的数据与绘制效果：
+
+```
+const render = data => {
+	// make one rectangle for each row
+  
+  	// D3 Data Join
+	svg.selectAll("rect").data(data) 
+  	.enter().append("rect")
+  	.attr("width",300)
+  	.attr("height",300)
+};
+```
+
+在数据执行函数（？）里面调用 render 函数，以完成方块的绘制：
+
+```
+csv("population.csv").then(data => {
+  data.forEach(d => {
+  	d.population = +d.population * 1000;
+  });
+	render(data);
+});
+```
+
+方块绘制出来后有个问题，目前都叠在一起：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/27.png)
+
+
+
+
+
