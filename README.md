@@ -394,6 +394,16 @@ csv("population.csv").then(data => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/27.png)
 
+### Day 28：Making a bar chart - part 4
+要解决叠在一起的问题，会需要用到以下三个 d3 的方法：scaleLinear, max, scaleBand。scaleLinear 用来处理 x 的位置（绑定 d.population），scaleBand 用来处理 y 的位置（绑定 d.country）。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/28.png)
+
+另外，因为要让 bar chart 横着放，所以在 svg 的绘制上，需要指定 y 的 attr。
+
+```
+.attr("y", d => yScale(d.country))
+```
 
 
 
