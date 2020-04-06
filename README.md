@@ -394,7 +394,7 @@ csv("population.csv").then(data => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/27.png)
 
-### Day 28：Making a bar chart - part 4
+### Day 28：Making a bar chart - part 5
 要解决叠在一起的问题，会需要用到以下三个 d3 的方法：scaleLinear, max, scaleBand。scaleLinear 用来处理 x 的位置（绑定 d.population），scaleBand 用来处理 y 的位置（绑定 d.country）。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/28.png)
@@ -404,6 +404,32 @@ csv("population.csv").then(data => {
 ```
 .attr("y", d => yScale(d.country))
 ```
+
+### Day 29：Making a bar chart - part 6
+使用 margin convention，来调整可视化的排版。先创立 margin、innerWidth、innerHeight的变量：
+
+```
+  const margin = {top:10, right:20, bottom: 20, left: 20};
+  const innerWidth = width - margin.left - margin.right;
+  const innerHeight = height - margin.top - margin.bottom;
+```
+
+然后在之前的代码基础上，修改width、height至新的变量innerWidth、innerHeight：
+
+```
+  const xScale = scaleLinear()
+  	.domain([0, max(data, d => d.population)])
+  	.range([0, innerWidth]);
+  
+  const yScale = scaleBand()
+  	.domain(data.map(d => d.country))
+  	.range([0, innerHeight]);
+  
+  const g = svg.append("g")
+  	.attr("transform", `translate(${margin.left},${margin.top})`);
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/29.png)
 
 
 
