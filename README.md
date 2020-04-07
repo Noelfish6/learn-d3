@@ -446,4 +446,4 @@ const yAxis = axisLeft(yScale);
 yAxis(g.append("g"));
 g.append("g").call(yAxis);
 ```
-
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/30.png)
