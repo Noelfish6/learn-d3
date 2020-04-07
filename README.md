@@ -432,5 +432,18 @@ csv("population.csv").then(data => {
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/29.png)
 
 
+### Day 30：Making a bar chart - part 7
+最后一步是添加坐标轴。先设置 y 轴的坐标轴：
 
+```
+const yAxis = axisLeft(yScale);
+```
+
+然后用下面的代码即可在 y 轴绘制出坐标轴，function（selection）是在 D3 很常用的方法：
+
+```
+// 两者择一
+yAxis(g.append("g"));
+g.append("g").call(yAxis);
+```
 
