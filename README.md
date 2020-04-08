@@ -446,4 +446,20 @@ const yAxis = axisLeft(yScale);
 yAxis(g.append("g"));
 g.append("g").call(yAxis);
 ```
+
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/30.png)
+
+### Day 31：Customizing axes of a bar chart - part 1
+处理坐标轴的数据格式，例如2000000，可以利用 d3 的 format 将这个数据改成 2M。
+
+```
+  const xAxis = axisBottom(xScale)
+  	.tickFormat(format(".3s"));
+  	
+  g.append("g").call(xAxis)
+  .attr("transform", `translate(${0},${innerHeight})`);
+```
+
+但实际操作时报错，目前不知道问题在哪里。
+
+
