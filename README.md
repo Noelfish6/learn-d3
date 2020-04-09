@@ -449,7 +449,7 @@ g.append("g").call(yAxis);
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/30.png)
 
-### Day 31：Customizing axes of a bar chart - part 1
+### Day 31：Customizing axes of a bar chart
 处理坐标轴的数据格式，例如2000000，可以利用 d3 的 format 将这个数据改成 2M。
 
 ```
@@ -461,5 +461,23 @@ g.append("g").call(yAxis);
 ```
 
 但实际操作时报错，目前不知道问题在哪里。
+
+### Day 32：Making a scatter plot - part 1
+
+scalePoint 用于 scatter plot；scaleBand 用于 bar chart。散点图的属性设置，跟长条图不一样的地方，是cx、cy、r，长条图用的是y、width、height。
+
+```
+import {
+  scalePoint
+} from 'd3';
+
+  g.selectAll('circle').data(data)
+    .enter().append('circle')
+      .attr('cy', d => yScale(yValue(d)))
+      .attr('cx', d => xScale(xValue(d)))
+      .attr('r', 20);
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/32.png)
 
 
