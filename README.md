@@ -480,4 +480,33 @@ import {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/32.png)
 
+### Day 33：Making a scatter plot - part 2
+调整可视化的细节。若觉得 x 轴跟散点图太靠近，可以增加 padding 的数值：
+
+```
+  const yScale = scalePoint()
+    .domain(data.map(yValue))
+    .range([0, innerHeight])
+    .padding(1);
+```
+
+因为 China 跟 India 的散点太远，阅读不便，所以在视觉上增加横轴线条：
+
+```
+  const yAxis = axisLeft(yScale)
+  	.tickSize(-innerWidth);
+  
+  g.append('g')
+    .call(yAxis)
+    .selectAll('.domain')
+      .remove();
+      
+  const xScale = scaleLinear()
+    .domain([0, max(data, xValue)])
+    .range([0, innerWidth])
+  	.nice(); // 用于快速调整轴线细节
+
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/33.png)
 
