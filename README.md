@@ -510,3 +510,38 @@ import {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/33.png)
 
+### Day 34：Making a scatter plot - part 3
+使用新的数据集-mpg。首先是载入数据：
+
+```
+csv('https://vizhub.com/curran/datasets/auto-mpg.csv').then(data => {
+  data.forEach(d => {
+    d.mpg = +d.mpg;
+    d.cylinders = +d.cylinders;
+    d.displacement = +d.displacement;
+    d.horsepower = +d.horsepower;
+    d.weight = +d.weight;
+    d.acceleration = +d.acceleration;
+    d.year = +d.year;
+  });
+  render(data);
+});
+```
+
+然后根据数据类型调整部分代码：
+
+```
+  const xValue = d => d.cylinders;
+  const yValue = d => d.mpg;
+  
+    const xScale = scaleLinear()
+    .domain(extent(data, xValue))
+    .range([0, innerWidth])
+  	.nice();
+  
+  const yScale = scaleLinear()
+    .domain(extent(data, yValue))
+    .range([0, innerHeight]);
+```
+
+需注意，extent 是需要使用（）包围，而不是[]。另外，yScale不需要使用 padding （为什么？），否则会报错。
