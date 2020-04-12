@@ -545,3 +545,14 @@ csv('https://vizhub.com/curran/datasets/auto-mpg.csv').then(data => {
 ```
 
 需注意，extent 是需要使用（）包围，而不是[]。另外，yScale不需要使用 padding （为什么？），否则会报错。
+
+### Day 35：Making an area plot - part 1
+面积图用到的是时间序列数据，对时序数据的处理，可以用 JS 原生的 Date() 方法：
+
+```
+d.timestamp = new Date(d.timestamp);
+```
+
+结果就是：Sat Mar 21 2015 05:00:00 GMT+0800。顺利读取正确的数据格式。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/35.png)
