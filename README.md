@@ -556,3 +556,46 @@ d.timestamp = new Date(d.timestamp);
 结果就是：Sat Mar 21 2015 05:00:00 GMT+0800。顺利读取正确的数据格式。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/35.png)
+
+### Day 36：Making an area plot - part 2
+因为更换了数据类型，若继续使用原来的设置，会有如下的结果产生：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/36-1.png)
+
+修改后的结果：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/36-2.png)
+
+详细比较：
+
+x轴的scale。原来：scaleLinear，修改：scaleTime，如此可以调整 x 轴的显示格式。
+
+y轴的range。原来：[0, innerHeight]，修改：[innerHeight, 0]，如此可以把数据的顺序置换。因为extent(data, yValue)到range的映射，数据最小值是y轴的最低部，所以映射到innerHeight。
+
+面积图。原来：
+
+```
+ g.selectAll('circle').data(data)
+    .enter().append('circle')
+      .attr('cy', d => yScale(yValue(d)))
+      .attr('cx', d => xScale(xValue(d)))
+      .attr('r', circleRadius);
+```
+
+
+更新：
+
+```
+  const lineGenerator = line()
+  	.x(d => xScale(xValue(d))) // not .x(xValue)
+  	.y(d => yScale(yValue(d))) // not .y(yValue)
+  	.curve(curveBasis);
+  
+  g.append('path')
+  	.attr('class', 'line-path')
+  	.attr('d', lineGenerator(data))
+```
+
+1、不需要用到 data(data)，这个是data join，但面积图只有一条线，所以不需要这个功能。
+2、在给x与y赋值的时候，需要注意将数据映射到scale——xScale(xValue(d)))；不能直接将数据给x与y——.x(xValue)。
+3、.curve(curveBasis)用来让线看起来较为圆滑，可以同时使用css的stroke-linejoin:round;功能。
