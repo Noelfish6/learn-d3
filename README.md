@@ -599,3 +599,10 @@ y轴的range。原来：[0, innerHeight]，修改：[innerHeight, 0]，如此可
 1、不需要用到 data(data)，这个是data join，但面积图只有一条线，所以不需要这个功能。
 2、在给x与y赋值的时候，需要注意将数据映射到scale——xScale(xValue(d)))；不能直接将数据给x与y——.x(xValue)。
 3、.curve(curveBasis)用来让线看起来较为圆滑，可以同时使用css的stroke-linejoin:round;功能。
+
+### Day 37：Making an area plot - part 3
+从折线图到面积图，代码API的使用上有所不同。面积图会需要制定x0、x1或y0、y1。若面积图跟坐标轴没有对齐，可以试着将xScale的.nice()给删除。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/37.png)
+
+
