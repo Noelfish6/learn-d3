@@ -606,3 +606,31 @@ y轴的range。原来：[0, innerHeight]，修改：[innerHeight, 0]，如此可
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/37.png)
 
 
+### Day 38：General update patterns - part 1
+学习四个数据更新方法：Enter、Exit、Update、Merge，并涵盖了四个主题：Animated Transition、Object constancy、Nested element、Singular elements。
+
+基础设置：
+
+```
+import { select, range } from 'd3';
+
+const svg = select('svg');
+
+const width = +svg.attr('width');
+const height = +svg.attr('height');
+
+const makeFruit = type => ({ type });
+
+const fruits = range(5)
+	.map(() => makeFruit('apple'));
+
+svg.selectAll('circle').data(fruits)
+	.enter().append('circle')
+		.attr('cx', (d, i) => i * 100)
+		.attr('cy', height/2)
+		.attr('fill', 'red')
+		.attr('r', 50);
+```
+
+
+
