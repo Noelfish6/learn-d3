@@ -632,5 +632,51 @@ svg.selectAll('circle').data(fruits)
 		.attr('r', 50);
 ```
 
+### Day 39：General update patterns - part 2
 
+对昨天的代码进行解释。下面的代码创建了data join:
 
+```
+.selectAll().data()
+```
+
+使用.selectAll()，可以让d3知道有哪些物件要跟数据绑定，但此时物件为空。在使用.data()时，可以让d3知道有哪些数据要跟物件绑定。此时使用.enter().append()可以完成这个绑定。
+
+```
+// Eat an apple. .pop() removes a data point
+fruits.pop();
+
+svg.selectAll('circle').data(fruits)
+	.exit().remove();
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/39.png)
+
+### Day 40：Let's make a map with D3.js
+
+成果：
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/40-1.png)
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/40-2.png)
+
+首先下载geojson的数据，并在import里面输入json。因为数据的内容有些不需要，可以创建变量来保留会用到的部分：
+
+```
+json('https://unpkg.com/world-atlas@1.1.4/world/110m.json')
+	.then(data => {
+  const countries = feature(data, data.objects.countries);
+ }
+```
+
+完成数据的导入后，继续在import里面输入geopath与各类的projecttion。geopath用来绘制图形（这段代码嵌入json里面）：
+
+```
+  svg.selectAll('path')
+  .data(countries.features)
+    .enter().append('path')
+  	.attr('class', 'country')
+  	.attr('d', pathGenerator);
+```
+
+projection 有数种选择，例如geoMercator()、geoOrthographic()、geoNaturalEarth1()。
+
+目前遇到一个问题：无法将网页的background颜色与地图底图的颜色区分，教程可以区分，但我实际做区分不了。比对代码并没有发现不同处。
