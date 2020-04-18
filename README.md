@@ -680,3 +680,43 @@ json('https://unpkg.com/world-atlas@1.1.4/world/110m.json')
 projection 有数种选择，例如geoMercator()、geoOrthographic()、geoNaturalEarth1()。
 
 目前遇到一个问题：无法将网页的background颜色与地图底图的颜色区分，教程可以区分，但我实际做区分不了。比对代码并没有发现不同处。
+
+### Day 41：Cheap Tricks for Interaction
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/41.png)
+
+两个目标：在 CSS 使用 hover 效果、创建提示框。
+
+在 CSS 使用 hover 效果，较为简单：
+
+```
+.country:hover {
+ 	fill:lightgrey;
+}
+```
+
+创建提示框（较为复杂，不懂的地方较多）：
+
+```
+Promise.all([
+	tsv('https://unpkg.com/world-atlas@1.1.4/world/110m.tsv'),
+  json('https://unpkg.com/world-atlas@1.1.4/world/110m.json')
+]).then(([tsvData, topoJSONdata]) => {
+  const countryName = {};
+  tsvData.forEach(d =>{
+  countryName[d.iso_n3] = d.name;
+  })
+  
+	const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
+  
+  svg.selectAll('path')
+  .data(countries.features)
+    .enter().append('path')
+  	.attr('class', 'country')
+  	.attr('d', pathGenerator)
+  	.append('title')
+  	.text(d => countryName[d.id]);
+});
+
+```
+
