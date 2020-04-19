@@ -720,3 +720,13 @@ Promise.all([
 
 ```
 
+### Day 42：Building a tree visualization of workd countries - part 1
+截至目前为止，已经学了基础的散点图、长条图、地图、基础交互，这次的任务要着手处理阶层数据。视频分成六个部分：
+
+- constructing a ode=link tree visualization
+- adding text labels to the nodes
+- using the margin convention
+- tweaking label alignment and size
+- padding and zooming
+- using a custom font
+
