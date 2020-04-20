@@ -730,3 +730,32 @@ Promise.all([
 - padding and zooming
 - using a custom font
 
+### Day 42：Building a tree visualization of workd countries - part 2
+任何项目第一步皆是先读取数据。d3.hierarchy 用来处理已经阶层化的数据，若数据还没有阶层化，则需要使用d3.stratify进行处理。目前使用的数据已经阶层化，所以使用d3.hierarchy。
+
+```
+json('data.json')
+	.then(data => {
+	console.log(data);
+});
+```
+
+参照d3的文档，初步绘制图形。linkPathGenerator用来绘制link（x、y的设置比较让人困惑，目前也不知道如何解释）。
+
+```
+json('data.json')
+	.then(data => {
+  const root = hierarchy(data);
+  const links = treeLayout(root).links();
+  const linkPathGenerator = linkHorizontal()
+  	.x(d => d.y)
+  	.y(d => d.x)
+  
+  svg.selectAll('path').data(links)
+  	.enter().append('path')
+  	.attr('d', linkPathGenerator)
+});
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/42.png)
+
