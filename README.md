@@ -720,17 +720,17 @@ Promise.all([
 
 ```
 
-### Day 42：Building a tree visualization of workd countries - part 1
+### Day 42：Building a tree visualization of world countries - part 1
 截至目前为止，已经学了基础的散点图、长条图、地图、基础交互，这次的任务要着手处理阶层数据。视频分成六个部分：
 
-- constructing a ode=link tree visualization
+- constructing a node-link tree visualization
 - adding text labels to the nodes
 - using the margin convention
 - tweaking label alignment and size
 - padding and zooming
 - using a custom font
 
-### Day 42：Building a tree visualization of workd countries - part 2
+### Day 43：Building a tree visualization of world countries - part 2
 任何项目第一步皆是先读取数据。d3.hierarchy 用来处理已经阶层化的数据，若数据还没有阶层化，则需要使用d3.stratify进行处理。目前使用的数据已经阶层化，所以使用d3.hierarchy。
 
 ```
@@ -739,6 +739,7 @@ json('data.json')
 	console.log(data);
 });
 ```
+- constructing a node-link tree visualization
 
 参照d3的文档，初步绘制图形。linkPathGenerator用来绘制link（x、y的设置比较让人困惑，目前也不知道如何解释）。
 
@@ -757,5 +758,26 @@ json('data.json')
 });
 ```
 
-![](https://github.com/Noelfish6/learn-d3/blob/master/pics/42.png)
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/43.png)
 
+### Day 44：Building a tree visualization of world countries - part 3
+
+昨天的图表会有那样的问题是因为继承了path的原始设定，此时只需要去css调整一下即可：
+
+```
+path {
+	fill:none;
+  stroke:black;
+}
+```
+- adding text labels to the nodes
+需留意root.descendants这个处理数据的方法：
+
+```
+  svg.selectAll('text').data(root.descendants())
+  	.enter().append('text')
+ 		.attr('x', d => d.y)
+  	.attr('y', d => d.x)
+  	.text(d => d.data.data.id)
+```
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/44.png)
