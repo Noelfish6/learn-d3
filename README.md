@@ -781,3 +781,23 @@ path {
   	.text(d => d.data.data.id)
 ```
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/44.png)
+
+### Day 45：Building a tree visualization of world countries - part 4
+今天的任务是调整标签的位置与尺寸。
+
+调整文字的位置：
+```
+  	.attr('dy', '0.32em')
+```
+
+新增文字的阴影效果，让文字易读：
+```
+text {
+	text-shadow:
+    -1px -1px 3px white,
+    -1px  1px 3px white,
+     1px -1px 3px white,
+     1px  1px 3px white,
+}
+```
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/45.png)
