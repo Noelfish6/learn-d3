@@ -801,3 +801,27 @@ text {
 }
 ```
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/45.png)
+
+### Day 46：Building a tree visualization of world countries - part 5
+因为文字超过页面视图，所以需要调整 margin，并使用 g 来设置边界：
+
+```
+const innerWidth = width - margin.left - margin.right;
+const innerHeight = height - margin.top - margin.bottom;
+const treeLayout = tree().size([innerHeight, innerWidth]);
+
+const g = svg
+    .attr('width', width)
+    .attr('height', height)
+    .append('g')
+    .attr('transform', 'translate(${margin.left},${margin.top})');
+```
+
+使用 anchor 加上逻辑判断，来设置部分文字标签的摆放位置：
+
+```
+.attr('text-anchor', d => d.children ? 'middle' : 'start')
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/46.png)
+
