@@ -825,3 +825,13 @@ const g = svg
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/46.png)
 
+### Day 47：Building a tree visualization of world countries - part 6
+加入以下的代码，即可对可视化进行缩放：
+
+```
+svg.call(zoom().on('zoom', () => {
+	g.attr('transform', event.transform);
+}))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/47.png)
