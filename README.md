@@ -835,3 +835,9 @@ svg.call(zoom().on('zoom', () => {
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/47.png)
+
+### Day 48：Choropleth map - part 1
+
+这次的主题是绘制区域热力图，使用的代码基于在原先的地图作品上，并做了些调整。在 JS 中，先使用 fill 来测试是否能够控制颜色，若无法控制，则需要检查 CSS 是否对 fill 的颜色有设置，因为 CSS 的优先级高于 JS。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/48.png)
