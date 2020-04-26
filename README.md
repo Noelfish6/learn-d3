@@ -841,3 +841,18 @@ svg.call(zoom().on('zoom', () => {
 这次的主题是绘制区域热力图，使用的代码基于在原先的地图作品上，并做了些调整。在 JS 中，先使用 fill 来测试是否能够控制颜色，若无法控制，则需要检查 CSS 是否对 fill 的颜色有设置，因为 CSS 的优先级高于 JS。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/48.png)
+
+### Day 49：Choropleth map - part 2
+目前的代码量较多且都放在同一个文件里面，可以透过创建 moduel 的方式来减少部分代码。
+
+```
+import {loadAndProcessData} from 'loadAndProcessData'
+
+loadAndProcessData().then(countries => {
+});
+
+```
+
+然后创建 loadAndProcessData.js 用来在别的文件读取这段代码。
+
+
