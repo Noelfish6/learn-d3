@@ -855,4 +855,49 @@ loadAndProcessData().then(countries => {
 
 然后创建 loadAndProcessData.js 用来在别的文件读取这段代码。
 
+```
+import { feature } from 'topojson';
+import { tsv, json } from 'd3';
+
+export const loadAndProcessData = () => 
+  Promise
+		.all([
+      tsv('https://unpkg.com/world-atlas@1.1.4/world/50m.tsv'),
+      json('https://unpkg.com/world-atlas@1.1.4/world/50m.json')
+    ])
+	.then(([tsvData, topoJSONdata]) => {
+    const rowById = tsvData.reduce((accumulator, d) => {
+      accumulator[d.iso_n3] = d;
+      return accumulator;
+    }, {});
+
+    const countries = feature(topoJSONdata, topoJSONdata.objects.countries);
+
+    countries.features.forEach(d => {
+      Object.assign(d.properties, rowById[d.id])
+    });
+    
+    return countries;
+  });
+  ```
+
+
+### Day 50：Scatter plot w/ menus
+昨天的图表因为有代码导致图画不出来，也找不到bug，所以就先跳过去。这次的任务是创建带有下拉框的散点图，下拉框可以筛选数据。
+
+首先是以散点图的代码为基础，创建了dropdownMenu.js：
+
+```
+export const dropdownMenu = (selection, props) => {
+	const {
+    options
+  } = props;
+};
+```
+
+然后在 index.js 调用刚才创建的代码块：
+
+```
+import { dropdownMenu } from './dropdownMenu'
+```
 
