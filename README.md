@@ -882,7 +882,7 @@ export const loadAndProcessData = () =>
   ```
 
 
-### Day 50：Scatter plot w/ menus
+### Day 50：Scatter plot w/ menus - part 1
 昨天的图表因为有代码导致图画不出来，也找不到bug，所以就先跳过去。这次的任务是创建带有下拉框的散点图，下拉框可以筛选数据。
 
 首先是以散点图的代码为基础，创建了dropdownMenu.js：
@@ -900,4 +900,36 @@ export const dropdownMenu = (selection, props) => {
 ```
 import { dropdownMenu } from './dropdownMenu'
 ```
+
+### Day 51：Scatter plot w/ menus - part 2
+
+调用 dropdownMenu 后，先做一个简单版本的 menu 来测试：
+
+```
+dropdownMenu(select('body'), {
+	options: ['1', '2', '3']
+})
+```
+
+然后在 dropdownMenu.js 的文件里面安插如下的代码：
+
+```
+export const dropdownMenu = (selection, props) => {
+	const {
+    options
+  } = props;
+  
+  let select = selection.selectAll('select').data([null]);
+  select = select.enter().append('select').merge(select);
+  
+  const option = select.selectAll('option').data(options);
+  option.enter().append('option').merge(option)
+  	.attr('value', d => d)
+  	.text(d => d);
+};
+```
+
+此时，menu 已经被创建出来了，但被掩盖在 svg 之下，需要继续调整。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/51.png)
 
