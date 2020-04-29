@@ -933,3 +933,36 @@ export const dropdownMenu = (selection, props) => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/51.png)
 
+## 项目4：Fullstack Data Visualization with D3
+这是一本电子书，作者为 Amelia Wattenberger，书本有比较多关于高阶可视化的教学。前一个课程到最后有比较多跟图表不相干的教学，代码难度也较大，故跳过那个课程。
+
+### Day 52：
+新的课程在代码的逻辑使用上也跟之前的课程有所不同。在这个课程中，调用代码的方式如下：
+
+```
+async function drawLineChart() {
+  // write your code here
+
+}
+
+drawLineChart()
+```
+
+第一个课程是在html去调用，这一块之后完成100天的打卡后要回来汇总思考。
+
+首先一样是读取数据：
+
+```
+async function drawLineChart() {
+  const dataset = await d3.json("./../../my_weather_data.json");
+  console.log(dataset);
+}
+
+drawLineChart()
+```
+
+
+
+
+
+
