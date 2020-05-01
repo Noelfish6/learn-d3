@@ -936,7 +936,7 @@ export const dropdownMenu = (selection, props) => {
 ## 项目4：Fullstack Data Visualization with D3
 这是一本电子书，作者为 Amelia Wattenberger，书本有比较多关于高阶可视化的教学。前一个课程到最后有比较多跟图表不相干的教学，代码难度也较大，故跳过那个课程。
 
-### Day 52：
+### Day 52：Making your first chart - part 1
 新的课程在代码的逻辑使用上也跟之前的课程有所不同。在这个课程中，调用代码的方式如下：
 
 ```
@@ -961,6 +961,21 @@ async function drawLineChart() {
 drawLineChart()
 ```
 
+### Day 52：Making your first chart - part 2
+以 accesor （存取器）的方式来读取数据：
+
+```
+  const yAccessor = d => d.temperatureMax;
+
+  const dateParser = d3.timeParse("%Y-%m-%d");
+  const xAccesor = d => dateParser(d.date);
+```
+
+作者提到，用这种方式比较少见，但是自己的经验总结出来的，有如下的优点：
+
+1. 容易修改：图表的数据或是设计样式要修改时，使用 accesor 改起来比较方便
+2. 便于记录：可以快速回忆是使用了数据的哪个字段
+3. 易于思考：使用这种方式可以帮助我们去思考要用数据的哪个字段
 
 
 
