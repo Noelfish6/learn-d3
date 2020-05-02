@@ -961,7 +961,7 @@ async function drawLineChart() {
 drawLineChart()
 ```
 
-### Day 52：Making your first chart - part 2
+### Day 53：Making your first chart - part 2
 以 accesor （存取器）的方式来读取数据：
 
 ```
@@ -977,7 +977,15 @@ drawLineChart()
 2. 便于记录：可以快速回忆是使用了数据的哪个字段
 3. 易于思考：使用这种方式可以帮助我们去思考要用数据的哪个字段
 
+### Day 54：Making your first chart - part 3
 
+在绘制图表时，可以将图表分成两个区域：wrapper以及bounds。Bounds为纯粹的图表本身，而wrapper是图表之外的元素——如坐标轴——的绘制区域。
+
+margin跟bounds的设置如下：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/54.png)
+
+Creating our scales 的部分不赘述。
 
 
 
