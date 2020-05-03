@@ -987,5 +987,33 @@ margin跟bounds的设置如下：
 
 Creating our scales 的部分不赘述。
 
+### Day 55：Making your first chart - part 3
+在绘制坐标轴时，较为冗余的方法是：
 
+```
+  	const yAxisGenerator = d3.axisLeft()
+  		.scale(yScale)
+
+  	const yAxis = bounds.append("g")
+  	yAxisGenerator(yAxis)
+```
+
+可以使用 .call 来连接代码：
+
+```
+  	const yAxis = bounds.append("g")
+  		.call(yAxisGenerator)
+```
+
+在绘制x坐标轴时，坐标轴的位置会被置顶，此时使用如下的代码去调整坐标轴的位置：
+
+```
+  	const xAxis = bounds.append("g")
+  		.call(xAxisGenerator)
+  		.style("transform", `translateY(${
+  			dimensions.boundedHeight
+  			}px`)
+```
+finished–
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/55.png)
 

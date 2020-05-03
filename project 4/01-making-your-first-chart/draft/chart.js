@@ -30,7 +30,7 @@ async function drawLineChart() {
   const wrapper = d3.select("#wrapper")
   	.append("svg")
   	.attr("width", dimensions.width)
-  	.attr("height", dimensions.height);
+  	.attr("height", dimensions.height)
 
   const bounds = wrapper.append("g")
   	.style("transform", `translate(${
@@ -54,6 +54,39 @@ async function drawLineChart() {
   	.attr('height', dimensions.boundedHeight
   		- freezingTemperaturePlacement)
   	.attr('fill', "#e0f3f3")
+
+  	const xScale = d3.scaleTime()
+  		.domain(d3.extent(dataset, xAccesor))
+  		.range([0, dimensions.boundedWidth])
+
+  	// transform our data point with both the accessor function and the scale
+	// to get the scaled value in pixel space
+  	const lineGenerator = d3.line()
+  		.x(d => xScale(xAccesor(d)))
+  		.y(d => yScale(yAccessor(d)))
+
+  	const line = bounds.append("path")
+  		.attr("d", lineGenerator(dataset))
+  		.attr("fill", "none")
+  		.attr("stroke", "#af9358")
+  		.attr("stroke-width", 2)
+
+
+  	// Drawing the axes
+  	const yAxisGenerator = d3.axisLeft()
+  		.scale(yScale)
+
+  	const yAxis = bounds.append("g")
+  		.call(yAxisGenerator)
+
+  	const xAxisGenerator = d3.axisBottom()
+  		.scale(xScale)
+
+  	const xAxis = bounds.append("g")
+  		.call(xAxisGenerator)
+  		.style("transform", `translateY(${
+  			dimensions.boundedHeight
+  			}px`)
 }
 
 drawLineChart()
