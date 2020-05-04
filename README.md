@@ -1017,3 +1017,26 @@ Creating our scales 的部分不赘述。
 finished–
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/55.png)
 
+### Day 56：Making a Scatterplot
+p56
+
+绘制图表的7个步骤：
+
+1. 读取数据
+2. 创建图表维度
+3. 绘制canvas（chart area & bounds element）
+4. 创建scale
+5. 绘制数据
+6. 绘制细节
+7. 设置交互
+
+为了让图表可以自适应页面大小（匹配最小的），这里使用 d3.min 方法。d3.min 相较于原生的 Math.min 有如下的优点：
+
+1. d3.min 忽略 nulls/undefined。Math.min 会把它们计算为0。
+2. d3.min 忽略无法被转换成数值的 value。Math.min 会返回 NaN。
+3. d3.min 在我们需要使用 accessor 时，不用额外新增数组。
+4. d3.min 对空数值会返回 undefined。 Math.min 则返回 Infinity。
+5. d3.min 返回的数值是自然排序，方便处理 strings。Math.min 按照数值大小排序。
+
+
+
