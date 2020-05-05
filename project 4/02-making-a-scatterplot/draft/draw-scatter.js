@@ -4,7 +4,7 @@ async function drawScatter() {
   
   // Access data
   const xAccessor = d => d.dewPoint
-  const yAccesssor = d => d.humidity
+  const yAccessor = d => d.humidity
 
   
   // Create chart dimensions
@@ -37,16 +37,41 @@ async function drawScatter() {
   	.attr('width', dimensions.width)
   	.attr('height', dimensions.height)
 
-  const bounds = wrapper.appned("g")
+  const bounds = wrapper.append("g")
   	.style("transform", `translate(${
   		dimensions.margin.left
   	}px, ${
   		dimensions.margin.top
   	}px)`)
 
+
   // Create scales
-  const xScale = d3.linearScale()
+  const xScale = d3.scaleLinear()
   	.domain(d3.extent(dataset, xAccessor))
   	.range([0, dimensions.boundedWidth])
+  	.nice()
+
+  const yScale = d3.scaleLinear()
+  	.domain(d3.extent(dataset, yAccessor))
+  	.range([dimensions.boundedHeight, 0])
+  	.nice()
+
+  // Draw data
+  dataset.forEach(d => {
+  	bounds
+  	.append("circle")
+  	.attr("cx", xScale(xAccessor(d)))
+  	.attr("cy", yScale(yAccessor(d)))
+  	.attr("r", 5)
+  })
+
+  // Data joins
+  const dots = bounds.selectAll("circle")
+  	.data(dataset)
+  	.append("circle")
+  	.attr("cx", d => xScale(xAccessor(d)))
+  	.attr("cy", d => yScale(yAccessor(d)))
+  	.attr("r", 5)
+  	.attr("fill", "cornflowerblue")
 }
 drawScatter()

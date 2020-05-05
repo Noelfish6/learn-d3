@@ -1017,8 +1017,7 @@ Creating our scales 的部分不赘述。
 finished–
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/55.png)
 
-### Day 56：Making a Scatterplot
-p56
+### Day 56：Making a Scatterplot - part 1
 
 绘制图表的7个步骤：
 
@@ -1038,5 +1037,32 @@ p56
 4. d3.min 对空数值会返回 undefined。 Math.min 则返回 Infinity。
 5. d3.min 返回的数值是自然排序，方便处理 strings。Math.min 按照数值大小排序。
 
+### Day 57：Making a Scatterplot - part 2
+67
+粗略绘制散点的代码：
 
+```
+  dataset.forEach(d => {
+  	bounds
+  	.append("circle")
+  	.attr("cx", xScale(xAccessor(d)))
+  	.attr("cy", yScale(yAccessor(d)))
+  	.attr("r", 5)
+  })
+```
 
+会有如下的问题：
+1. 代码嵌套，比较难阅读
+2. 跑代码两次，就会绘制两组散点。需要更新数据。
+
+比较好的处理方式：
+
+```
+  const dots = bounds.selectAll("circle")
+  	.data(dataset)
+  	.append("circle")
+  	.attr("cx", d => xScale(xAccessor(d)))
+  	.attr("cy", d => yScale(yAccessor(d)))
+  	.attr("r", 5)
+  	.attr("fill", "cornflowerblue")
+```
