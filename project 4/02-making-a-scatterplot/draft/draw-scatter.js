@@ -56,22 +56,52 @@ async function drawScatter() {
   	.range([dimensions.boundedHeight, 0])
   	.nice()
 
-  // Draw data
-  dataset.forEach(d => {
-  	bounds
-  	.append("circle")
-  	.attr("cx", xScale(xAccessor(d)))
-  	.attr("cy", yScale(yAccessor(d)))
-  	.attr("r", 5)
-  })
+  // // Draw data
+  // dataset.forEach(d => {
+  // 	bounds
+  // 	.append("circle")
+  // 	.attr("cx", xScale(xAccessor(d)))
+  // 	.attr("cy", yScale(yAccessor(d)))
+  // 	.attr("r", 5)
+  // })
 
   // Data joins
   const dots = bounds.selectAll("circle")
   	.data(dataset)
-  	.append("circle")
+  	.enter().append("circle")
   	.attr("cx", d => xScale(xAccessor(d)))
   	.attr("cy", d => yScale(yAccessor(d)))
-  	.attr("r", 5)
+  	.attr("r", 4)
   	.attr("fill", "cornflowerblue")
+
+  const xAxisGenerator = d3.axisBottom().scale(xScale)
+
+  const xAxis = bounds.append("g")
+  	.call(xAxisGenerator)
+  	.style("transform", `translateY(${dimensions.boundedHeight}px)`)
+
+  const xAxisLabel = xAxis.append("text")
+  	.attr("x", dimensions.boundedWidth / 2)
+  	.attr("y", dimensions.boundedHeight / 2)
+  	.attr("fill", "black")
+  	.style("font-size", "1.4em")
+  	.html("Dew point (&deg;F)")
+
+  const yAxisGenerator = d3.axisLeft()
+  	.scale(yScale)
+  	.ticks(4)
+
+  const yAxis = bounds.append("g")
+  	.call(yAxisGenerator)
+
+  const yAxisLabel = yAxis.append("text")
+  	.attr("x", -dimensions.boundedHeight / 2)
+  	.attr("y", -dimensions.margin.left + 10)
+  	.attr("fill", "black")
+  	.style("font-size", "1.4em")
+  	.text("Relative humidity")
+  	.style("transform", "rotate(-90deg)")
+  	.style("text-anchor", "middle")
+
 }
 drawScatter()

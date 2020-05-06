@@ -1038,7 +1038,7 @@ finished–
 5. d3.min 返回的数值是自然排序，方便处理 strings。Math.min 按照数值大小排序。
 
 ### Day 57：Making a Scatterplot - part 2
-67
+
 粗略绘制散点的代码：
 
 ```
@@ -1066,3 +1066,39 @@ finished–
   	.attr("r", 5)
   	.attr("fill", "cornflowerblue")
 ```
+
+### Day 58：Making a Scatterplot - part 3
+
+绘制剩余细节。坐标轴的绘制，x、y轴的思路差不多：
+
+```
+  const xAxisGenerator = d3.axisBottom().scale(xScale)
+
+  const xAxis = bounds.append("g")
+  	.call(xAxisGenerator)
+  	.style("transform", `translateY(${dimensions.boundedHeight}px)`)
+
+  const xAxisLabel = xAxis.append("text")
+  	.attr("x", dimensions.boundedWidth / 2)
+  	.attr("y", dimensions.boundedHeight / 2)
+  	.attr("fill", "black")
+  	.style("font-size", "1.4em")
+  	.html("Dew point (&deg;F)")
+
+  const yAxisGenerator = d3.axisLeft()
+  	.scale(yScale)
+  	.ticks(4)
+
+  const yAxis = bounds.append("g")
+  	.call(yAxisGenerator)
+
+  const yAxisLabel = yAxis.append("text")
+  	.attr("x", -dimensions.boundedHeight / 2)
+  	.attr("y", -dimensions.margin.left + 10)
+  	.attr("fill", "black")
+  	.style("font-size", "1.4em")
+  	.text("Relative humidity")
+  	.style("transform", "rotate(-90deg)")
+  	.style("text-anchor", "middle")
+```
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/58.png)
