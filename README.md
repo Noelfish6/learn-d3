@@ -1101,4 +1101,31 @@ finished–
   	.style("transform", "rotate(-90deg)")
   	.style("text-anchor", "middle")
 ```
+
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/58.png)
+
+### Day 59：Making a Scatterplot - part 4
+
+在原有的图表基础上添加颜色 scale。首先是创建颜色的 accessor 与 颜色 scale：
+
+```
+const colorAccessor = d => d.cloudCover
+
+  const colorScale = d3.scaleLinear()
+  	.domain(d3.extent(dataset, colorAccessor))
+  	.range(["skyblue", "darkslategrey"])
+```
+
+然后在点的代码上稍微修改一下，把原本写死的颜色置换成 colorScale：
+
+```
+  const dots = bounds.selectAll("circle")
+  	.data(dataset)
+  	.enter().append("circle")
+  	.attr("cx", d => xScale(xAccessor(d)))
+  	.attr("cy", d => yScale(yAccessor(d)))
+  	.attr("r", 4)
+  	.attr("fill", d => colorScale(colorAccessor(d)))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/59.png)

@@ -5,7 +5,7 @@ async function drawScatter() {
   // Access data
   const xAccessor = d => d.dewPoint
   const yAccessor = d => d.humidity
-
+  const colorAccessor = d => d.cloudCover
   
   // Create chart dimensions
   const width = d3.min([
@@ -56,6 +56,10 @@ async function drawScatter() {
   	.range([dimensions.boundedHeight, 0])
   	.nice()
 
+  const colorScale = d3.scaleLinear()
+  	.domain(d3.extent(dataset, colorAccessor))
+  	.range(["skyblue", "darkslategrey"])
+
   // // Draw data
   // dataset.forEach(d => {
   // 	bounds
@@ -65,14 +69,14 @@ async function drawScatter() {
   // 	.attr("r", 5)
   // })
 
-  // Data joins
+  // Draw data
   const dots = bounds.selectAll("circle")
   	.data(dataset)
   	.enter().append("circle")
   	.attr("cx", d => xScale(xAccessor(d)))
   	.attr("cy", d => yScale(yAccessor(d)))
   	.attr("r", 4)
-  	.attr("fill", "cornflowerblue")
+  	.attr("fill", d => colorScale(colorAccessor(d)))
 
   const xAxisGenerator = d3.axisBottom().scale(xScale)
 
@@ -102,6 +106,7 @@ async function drawScatter() {
   	.text("Relative humidity")
   	.style("transform", "rotate(-90deg)")
   	.style("text-anchor", "middle")
+
 
 }
 drawScatter()
