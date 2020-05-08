@@ -1129,3 +1129,28 @@ const colorAccessor = d => d.cloudCover
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/59.png)
+
+### Day 60：Making a Bar Chart - part 1
+一样分成七个步骤：
+
+1. 获取数据
+2. 制造维度
+3. 绘制canvas
+4. 制造scale
+5. 绘制数据
+6. 绘制其余细节
+7. 设置交互
+
+```
+async function drawBars() {
+  
+
+  const dataset = await d3.json("./../../my_weather_data.json")
+  //console.log(dataset)
+  const metricAccessor = d => d.humidity
+  
+}
+drawBars()
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/60.png)
