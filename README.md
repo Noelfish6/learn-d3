@@ -1154,3 +1154,29 @@ drawBars()
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/60.png)
+
+### Day 61：Making a Bar Chart - part 2
+
+设置 wrapper 与 bounds，用来承载图表的绘制空间：
+
+```
+const width = 600
+
+  let dimensions = {
+  	width: width,
+  	height: width * 0.6,
+  	margin: {
+  		top: 30,
+  		right: 10,
+  		bottom: 50,
+  		left: 50,
+  	},
+  }
+
+  dimensions.boundedWidth = dimensions.width
+  	- dimensions.margin.left
+  	- dimensions.margin.right
+  dimensions.boundedHeight = dimensions.height
+  	- dimensions.margin.top
+  	- dimensions.margin.bottom
+```
