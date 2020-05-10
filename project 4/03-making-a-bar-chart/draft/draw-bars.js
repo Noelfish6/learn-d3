@@ -25,5 +25,18 @@ async function drawBars() {
   dimensions.boundedHeight = dimensions.height
   	- dimensions.margin.top
   	- dimensions.margin.bottom
+
+  // draw canvas
+  const wrapper = d3.select("#wrapper")
+  	.append("svg")
+  	.attr("width", dimensions.width)
+  	.attr("height", dimensions.height)
+
+  const bounds = wrapper.append("g")
+  	.style("transform", `translate(${
+  		dimensions.margin.left
+  	}px, ${
+  		dimensions.margin.top
+  	}px)`)
 }
 drawBars()
