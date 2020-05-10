@@ -1181,7 +1181,7 @@ const width = 600
   	- dimensions.margin.bottom
 ```
 
-### Day 61：Making a Bar Chart - part 3
+### Day 62：Making a Bar Chart - part 3
 绘制 canvas。尝试自己写了一遍，发现还是会写错，对代码的思路还没完全熟悉。设置 wrapper 会用到 attr，而设置 bounds 会用到 style。为什么会有这个区别？
 
 ```
