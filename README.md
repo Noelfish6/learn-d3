@@ -1199,3 +1199,16 @@ const width = 600
   	}px)`)
 ```
 
+### Day 63：Making a Bar Chart - part 4
+
+创建 x 轴的 sacle：
+
+```
+  const xScale = d3.scaleLinear()
+  	.domain(d3.extent(dataset, metricAccessor))
+  	.range([0, dimensions.boundedWidth])
+  	.nice()
+```
+
+接下来应该是创建 y 轴的 scale，但作者指出，要创建 scale 之前，需要对数据有所理解，所以先展示不创建 scale。
+
