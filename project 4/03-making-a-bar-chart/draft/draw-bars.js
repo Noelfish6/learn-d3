@@ -38,5 +38,21 @@ async function drawBars() {
   	}px, ${
   		dimensions.margin.top
   	}px)`)
+
+  // create scales
+  const xScale = d3.scaleLinear()
+  	.domain(d3.extent(dataset, metricAccessor))
+  	.range([0, dimensions.boundedWidth])
+  	.nice()
+
+  // creating bins
+  const binsGenerator = d3.histogram()
+  	.domain(xScale.domain())
+  	.value(metricAccessor)
+  	.thresholds(12)
+
+  const bins = binsGenerator(dataset)
+
+  console.log(bins)
 }
 drawBars()

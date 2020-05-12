@@ -1212,3 +1212,19 @@ const width = 600
 
 接下来应该是创建 y 轴的 scale，但作者指出，要创建 scale 之前，需要对数据有所理解，所以先展示不创建 scale。
 
+### Day 64：Making a Bar Chart - part 5
+
+制作 historgram 的分箱：
+
+```
+  const binsGenerator = d3.histogram()
+  	.domain(xScale.domain())
+  	.value(metricAccessor)
+  	.thresholds(12)
+
+  const bins = binsGenerator(dataset)
+```
+
+首先定义 x 轴的 scale，然后再使用 d3.hostogram 去绘制图表，一样是 domain 到 range 的映射，但这里没有使用 range 而是 value，需要特别注意。
+
+
