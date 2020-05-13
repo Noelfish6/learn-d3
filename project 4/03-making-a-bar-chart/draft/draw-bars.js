@@ -53,6 +53,13 @@ async function drawBars() {
 
   const bins = binsGenerator(dataset)
 
-  console.log(bins)
+  // creating the y sacle
+  const yAccessor = d => d.length
+
+  const yScale = d3.scaleLinear()
+  	.domain([0, d3.max(bins, yAccessor)])
+  	.range([dimensions.boundedHeight, 0])
+  	.nice()
+  	
 }
 drawBars()

@@ -1227,4 +1227,17 @@ const width = 600
 
 首先定义 x 轴的 scale，然后再使用 d3.hostogram 去绘制图表，一样是 domain 到 range 的映射，但这里没有使用 range 而是 value，需要特别注意。
 
+### Day 65：Making a Bar Chart - part 6
+
+今天的任务是设置 y 轴的 scale。设置方式跟之前一样，不赘述。
+
+```
+  const yAccessor = d => d.length
+
+  const yScale = d3.scaleLinear()
+  	.domain([0, d3.max(bins, yAccessor)])
+  	.range([dimensions.boundedHeight, 0])
+  	.nice()
+```
+
 
