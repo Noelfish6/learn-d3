@@ -1223,6 +1223,7 @@ const width = 600
   	.thresholds(12)
 
   const bins = binsGenerator(dataset)
+  
 ```
 
 首先定义 x 轴的 scale，然后再使用 d3.hostogram 去绘制图表，一样是 domain 到 range 的映射，但这里没有使用 range 而是 value，需要特别注意。
@@ -1238,6 +1239,31 @@ const width = 600
   	.domain([0, d3.max(bins, yAccessor)])
   	.range([dimensions.boundedHeight, 0])
   	.nice()
+```
+
+### Day 66：Making a Bar Chart - part 7
+使用 <rect> 来绘制长条图，这会需要用到四个变量： x、y、width， 与 height。另外， 每一个 bar 的宽度需要从 x0、x1的差分来决定。
+
+```
+  const binsGroup = bounds.append("g")
+
+  const binGroups = binsGroup.selectAll("g")
+  	.data(bins)
+  	.enter().append("g")
+
+  const barPadding = 1
+
+  const barRects = binGroups.append("rect")
+  	.attr("x", d => xScale(d.x0) + barPadding / 2)
+  	.attr("y", d => yScale(yAccessor(d))
+  	.attr("width", d => d3.max([
+  		0,
+  		xScale(d.x1) - xScale(d.x0) - barPadding
+  		]))
+  	.attr("height", d => dimensions.boundedHeight
+  		- yScale(yAccessor(d))
+  		)
+  	.attr("fill", "cornflowerblue")
 ```
 
 
