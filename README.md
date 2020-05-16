@@ -1266,4 +1266,20 @@ const width = 600
   	.attr("fill", "cornflowerblue")
 ```
 
+### Day 67：Making a Bar Chart - part 8
+
+为图表增添坐标轴的标签，最主要的问题是找到文字锚点的位置，需要透过简单的计算可以找到：
+
+```
+  	const barText = binGroups.filter(yAccessor)
+  		.append("text")
+  		.attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)
+  		.attr("y", d => yScale(yAccessor(d)) - 5)
+  		.text(yAccessor)
+  		.style("text-nchor", "middle")
+  		.attr("fill", "darkgrey")
+  		.style("font-size", "12px")
+  		.style("font-family", "sans-serif")
+```
+
 
