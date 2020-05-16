@@ -1282,4 +1282,55 @@ const width = 600
   		.style("font-family", "sans-serif")
 ```
 
+### Day 68：Making a Bar chart - part 9
+
+额外的绘制：增添平均线。利用 d3.mean 来计算平均数的位置：
+
+```
+ const meanLine = bounds.append("line")
+ 	.attr("x1", xScale(mean))
+ 	.attr("x2", xScale(mean))
+ 	.attr("y1", -15)
+ 	.attr("y2", dimensions.boundedHeight)
+ 	.attr("stroke", "maroon")
+ 	.attr("stroke-dasharray", "2px 4px")
+```
+
+x1 与 x2 会影响到线的绘制，若没有设置 x2，则绘制出来的效果是从 0 到 平均数位置的斜线。
+
+另外，对这条线加上标签：
+
+```
+ const meanLabel = bounds.append("text")
+ 	.attr("x", xScale(mean))
+ 	.attr("y", -20)
+ 	.text("mean")
+ 	.attr("fill", "maroon")
+ 	.style("font-size", "12px")
+ 	.style("text-anchor", "middle")
+```
+
+特别注意需要设置 text-anchor，否则标签的位置不会居中。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/68.png)
+
+绘制 x 轴：
+
+```
+ const xAxisGenerator = d3.axisBottom()
+ 	.scale(xScale)
+
+ const xAxis = bounds.append("g")
+ 	.call(xAxisGenerator)
+ 	.style("transform", `translateY(${dimensions.boundedHeight}px)`)
+
+ const xAxisLabel = xAxis.append("text")
+ 	.attr("x", dimensions.boundedWidth / 2)
+ 	.attr("y", dimensions.margin.bottom - 10)
+ 	.attr("fill", "black")
+ 	.style("font-size", "1.4em")
+ 	.text("humidity")
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/68-2.png)
 
