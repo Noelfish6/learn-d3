@@ -1334,3 +1334,22 @@ x1 与 x2 会影响到线的绘制，若没有设置 x2，则绘制出来的效�
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/68-2.png)
 
+### Day 69：Making a Bar chart - part 10
+根据之前的基础，绘制分页形式的图表。先将之前绘制图表的代码包在 drawHistogram 里面，然后在代码最下面调用这个函数（否则会画不出来）：
+
+```
+async function drawBars() {
+	const dataset
+	const metricAccessor
+	// 略
+	const drawHistogram = metric => {
+	// 略
+	}
+	const metrics // 用于绘制每一个分页的图表标题
+	metrics.forEach(drawHistogram)
+}
+drawBars()
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/69.png)
+
