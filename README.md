@@ -1353,3 +1353,41 @@ drawBars()
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/69.png)
 
+### Day 70：Making a Bar chart - part 11
+今天的任务是给图表增加易读性。
+
+```
+  wrapper.attr("role", "figure")
+    .attr("tabindex", "0")
+    .append("title")
+    .text("Histogram looking at the distribution of humidity in 2016")
+```
+
+把之前删除的 bindGroup 加回来：
+
+```
+  const binsGroup = bounds.append("g")
+    .attr("tabindex", "0")
+    .attr("role", "list")
+    .attr("aria-label", "histogram bars")
+```
+
+这一段代码让每一个柱条可以点击：
+
+```
+  const binGroups = binsGroup.selectAll("g")
+    .data(bins)
+    .enter().append("g")
+    .attr("tabindex", "0")
+    .attr("role", "listitem")
+    .attr("aria-label", d => `There were ${
+      yAccessor(d)
+    } days between ${
+      d.x0.toString().slice(0, 4)
+    } and ${
+      d.x1.toString().slice(0, 4)
+    } humidity levels.`)
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/70.png)
+
