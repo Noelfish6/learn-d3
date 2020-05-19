@@ -1391,3 +1391,23 @@ drawBars()
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/70.png)
 
+### Day 71：Animations and Transitions - part 1
+
+几种绘制动画的方法：
+
+* SVG <animate>，浏览器不支援，只能定义静态的动画
+* CSS transition，此书用到的图表基本上都可以用CSS实现动画
+* d3.transition
+
+先以CSS为例，在之前的 histogram 基础上加入 transition：
+
+```
+.bin rect {
+    fill: cornflowerblue;
+    transition: height 1s ease-out,
+                    y  1s ease-out;
+}
+``` 
+
+此种动画较为符合用户心智，长条图的更新涉及到高度的变化。
+
