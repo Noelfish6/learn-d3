@@ -1411,3 +1411,27 @@ drawBars()
 
 此种动画较为符合用户心智，长条图的更新涉及到高度的变化。
 
+### Day 72：Animations and Transitions - part 2
+
+对标签进行设置，在 y 轴方向上加入动画，让整体的动画过度更为自然：
+
+```
+    const barText = binGroups.select("text")
+        .attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)
+        .attr("y", 0)
+        .style("transform", d => `translateY(${
+          yScale(yAccessor(d)) - 5
+        }px)`)
+        .text(d => yAccessor(d) || "")
+```
+
+另外，在平均数的线也可以继续动画设置：
+
+```
+    const meanLine = bounds.selectAll(".mean")
+        .attr("y1", -20)
+        .attr("y2", dimensions.boundedHeight)
+        .style("transform", `translateX(${xScale(mean)}px)`)
+```
+
+并在 CSS 加上 transition: transform 1s ease-out 即可。
