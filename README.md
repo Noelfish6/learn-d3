@@ -1435,3 +1435,15 @@ drawBars()
 ```
 
 并在 CSS 加上 transition: transform 1s ease-out 即可。
+
+### Day 73：Animations and Transitions - part 3
+
+开始讲解 d3.transition。在以下的需求使用 d3.transition 而不是 css：
+
+1. 当需要将多个动画依序进行
+2. 当在动画结束后要做某个动作
+3. 当某个 property 的动画CSS不支持
+4. 当要同时与动画增加或删除元素
+5. 当要中断动画
+6. 当要自定义动画
+
