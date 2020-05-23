@@ -83,13 +83,17 @@ async function drawBars() {
     binGroups = newBinGroups.merge(binGroups)
 
     const barRects = binGroups.select("rect")
+      .transition()
         .attr("x", d => xScale(d.x0) + barPadding)
         .attr("y", d => yScale(yAccessor(d)))
+        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
         .attr("width", d => d3.max([
           0,
           xScale(d.x1) - xScale(d.x0) - barPadding
         ]))
-        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
+        
+
+    console.log(barRects)
 
     const barText = binGroups.select("text")
         .attr("x", d => xScale(d.x0) + (xScale(d.x1) - xScale(d.x0)) / 2)

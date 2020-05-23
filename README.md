@@ -1447,3 +1447,23 @@ drawBars()
 5. 当要中断动画
 6. 当要自定义动画
 
+### Day 73：Animations and Transitions - part 4
+
+使用 d3.transition，并 console 结果：
+
+```
+    const barRects = binGroups.select("rect")
+      .transition()
+        .attr("x", d => xScale(d.x0) + barPadding)
+        .attr("y", d => yScale(yAccessor(d)))
+        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
+        .attr("width", d => d3.max([
+          0,
+          xScale(d.x1) - xScale(d.x0) - barPadding
+        ]))
+
+    console.log(barRects)
+```
+
+比较奇怪的是，console出来的结果没有 transition，需要再去查明原因。
+
