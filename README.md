@@ -1447,7 +1447,7 @@ drawBars()
 5. 当要中断动画
 6. 当要自定义动画
 
-### Day 73：Animations and Transitions - part 4
+### Day 74：Animations and Transitions - part 4
 
 使用 d3.transition，并 console 结果：
 
@@ -1467,3 +1467,36 @@ drawBars()
 
 比较奇怪的是，console出来的结果没有 transition，需要再去查明原因。
 
+### Day 75：Animations and Transitions - part 5
+
+使用 style 来对图表的颜色进行设置，这样可以避免被 CSS 给覆盖；设置颜色用来观察 d3.transition 的特性：
+
+```
+   const barRects = binGroups.select("rect")
+      .transition().duration(1200).ease(d3.easeBounceOut)
+        .attr("x", d => xScale(d.x0) + barPadding)
+        .attr("y", d => yScale(yAccessor(d)))
+        .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
+        .attr("width", d => d3.max([
+          0,
+          xScale(d.x1) - xScale(d.x0) - barPadding
+        ]))
+      .transition()
+        .style('fill', 'cornflowerblue')
+        
+```
+
+另外，对 text 设置 transition 以及 duration， 也可以看到 d3.transition 是如何对这些元素进行动画处理。
+
+### Day 76：Animations and Transitions - part 6
+
+这一部份学得比较困惑，关于使用 exit 对动画进行更新后的处理，后续再找时间回来复习。
+
+```
+const oldBinGroups = binGroups.exit()oldBinGroups.selectAll("rect").style("fill", "red").transition(exitTransition).attr("y", dimensions.boundedHeight).attr("height", 0)
+
+oldBinGroups.selectAll("text").transition(exitTransition).attr("y", dimensions.boundedHeight)
+
+oldBinGroups.transition(exitTransition).remove()
+
+```
