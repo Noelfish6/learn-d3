@@ -1500,3 +1500,18 @@ oldBinGroups.selectAll("text").transition(exitTransition).attr("y", dimensions
 oldBinGroups.transition(exitTransition).remove()
 
 ```
+
+### Day 77：Animations and Transitions - part 7
+
+对折线图进行动画设置。
+
+```
+    const xAxis = bounds.select(".x-axis")
+      .transition().duration(1000)
+      .call(xAxisGenerator)
+      
+	const line = bounds.select(".line")
+        .transition().duration(1000)
+        .attr("d", lineGenerator(dataset))
+```
+
