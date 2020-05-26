@@ -1515,3 +1515,17 @@ oldBinGroups.transition(exitTransition).remove()
         .attr("d", lineGenerator(dataset))
 ```
 
+### Day 78：Animations and Transitions - part 8
+
+设置x轴的动画效果：
+
+```
+const xAxis = bounds.select(".x-axis").transition().duration(1000).call(xAxisGenerator)
+```
+
+设置折线的动画效果：
+
+```
+const line = bounds.select(".line").transition().duration(1000).attr("d", lineGenerator(dataset))
+```
+

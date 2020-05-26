@@ -43,6 +43,9 @@ async function drawLineChart() {
       .style("transform", `translateY(${dimensions.boundedHeight}px)`)
   bounds.append("g")
       .attr("class", "y-axis")
+  bounds.append("defs")
+      .append("clipPath")
+      .attr("id", "bounds-clip-path")
 
   const drawLine = (dataset) => {
 
@@ -69,9 +72,16 @@ async function drawLineChart() {
       .x(d => xScale(xAccessor(d)))
       .y(d => yScale(yAccessor(d)))
 
+    const lastTwoPoints = dataset.slice(-2)
+    const pixelBetweenLastPoints = xScale(xAccessor(lastTwoPoints[1]))
+      - xScale(xAccessor(lastTwoPoints))
+
     const line = bounds.select(".line")
-        .transition().duration(1000)
         .attr("d", lineGenerator(dataset))
+        .transition().duration(1000)
+        .style("transform", `translateX(${pixelBetweenLastPoints}px)`)
+        .transition().duration(1000)
+        .style('transform', 'none')
 
     // 6. Draw peripherals
 
