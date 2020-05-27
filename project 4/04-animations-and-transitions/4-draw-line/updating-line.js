@@ -36,6 +36,10 @@ async function drawLineChart() {
   // init static elements
   bounds.append("rect")
       .attr("class", "freezing")
+  const clip = bounds.append("g")
+      .attr("clip-patn", "url(#bounds-clip-path)")
+  clip.append("path")
+      .attr("class", "line")
   bounds.append("path")
       .attr("class", "line")
   bounds.append("g")
@@ -46,6 +50,11 @@ async function drawLineChart() {
   bounds.append("defs")
       .append("clipPath")
       .attr("id", "bounds-clip-path")
+      .append("rect")
+      .attr("width", dimensions.boundedWidth)
+      .attr("height", dimensions.boundedHeight)
+  bounds.append("rect")
+      .attr("class", "freezing")
 
   const drawLine = (dataset) => {
 

@@ -1529,3 +1529,31 @@ const xAxis = bounds.select(".x-axis").transition().duration(1000).call(xAxisG
 const line = bounds.select(".line").transition().duration(1000).attr("d", lineGenerator(dataset))
 ```
 
+### Day 79：Animations and Transitions - part 9
+对折线图进行动画设置的最后一个部分，但仍有未解的bug，线消失了：
+
+```
+bounds.append("rect")
+      .attr("class", "freezing")
+  const clip = bounds.append("g")
+      .attr("clip-patn", "url(#bounds-clip-path)")
+  clip.append("path")
+      .attr("class", "line")
+  bounds.append("path")
+      .attr("class", "line")
+  bounds.append("g")
+      .attr("class", "x-axis")
+      .style("transform", `translateY(${dimensions.boundedHeight}px)`)
+  bounds.append("g")
+      .attr("class", "y-axis")
+  bounds.append("defs")
+      .append("clipPath")
+      .attr("id", "bounds-clip-path")
+      .append("rect")
+      .attr("width", dimensions.boundedWidth)
+      .attr("height", dimensions.boundedHeight)
+  bounds.append("rect")
+      .attr("class", "freezing")
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/79.png)
