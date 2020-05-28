@@ -1557,3 +1557,14 @@ bounds.append("rect")
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/79.png)
+
+### Day 80：Interactions
+原生的事件监听器 addEventListener() 可以监控使用者的鼠标、键盘、滑动、触控、缩放等事件。
+
+```
+function onClick(event) {
+	// do something
+}
+addEventListener("click", onClick)
+```
+
