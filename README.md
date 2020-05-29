@@ -1558,7 +1558,7 @@ bounds.append("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/79.png)
 
-### Day 80：Interactions
+### Day 80：Interactions - part 1
 原生的事件监听器 addEventListener() 可以监控使用者的鼠标、键盘、滑动、触控、缩放等事件。
 
 ```
@@ -1568,3 +1568,21 @@ function onClick(event) {
 addEventListener("click", onClick)
 ```
 
+### Day 81：Interactions - part 2
+
+D3 的 .on() 方法可以生成事件监听器，以下面的代码为例：
+
+```
+async function createEvent() {
+	const recColors = [...]
+	const rects = d3.select(...)...
+	
+	rects.on("mouseenter", function(datum, index, nodes) {
+	console.log({datum, index, nodes})
+	}
+} 
+```
+
+在 async function 里面，定义了方块颜色与方块，给方块绑定 .on() 的方法，从 console.log 的结果可以看到，.on() 可以接受3种参数：数据、索引、被选择到的节点。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/81.png)
