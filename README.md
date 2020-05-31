@@ -1586,3 +1586,23 @@ async function createEvent() {
 在 async function 里面，定义了方块颜色与方块，给方块绑定 .on() 的方法，从 console.log 的结果可以看到，.on() 可以接受3种参数：数据、索引、被选择到的节点。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/81.png)
+
+### Day 82：Interactions - part 3
+
+想要改变当前方块的颜色，得先创建一个selection。比较简单的方法：
+
+```
+  rects.on("mouseenter", function(datum, index, nodes){
+    console.log(this)
+  })
+```
+
+使用 this 可以选择到该物件。
+
+```
+  rects.on("mouseenter", function(datum, index, nodes){
+    d3.select(this).style("fill", datum)
+  })
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/82.png)

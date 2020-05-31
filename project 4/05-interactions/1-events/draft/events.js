@@ -18,7 +18,7 @@ async function createEvent() {
 
   // your code here
   rects.on("mouseenter", function(datum, index, nodes){
-    console.log({datum, index, nodes})
+    d3.select(this).style("fill", datum)
   })
 
 }
