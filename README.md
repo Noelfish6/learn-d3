@@ -1606,3 +1606,17 @@ async function createEvent() {
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/82.png)
+
+### Day 83：Interactions - part 4
+
+修改代码让方块在鼠标移出后恢复原本的颜色。
+
+```
+  rects.on("mouseenter", function(datum, index, nodes){
+    d3.select(this).style("fill", datum)
+  })
+  .on("mouseout", function(){
+    d3.select(this).style("fill", "lightgrey")
+  })
+```
+
