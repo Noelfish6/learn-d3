@@ -17,12 +17,20 @@ async function createEvent() {
       .attr("fill", "lightgrey")
 
   // your code here
-  rects.on("mouseenter", function(datum, index, nodes){
+  rects
+    .on("mousemove", function(datum){
     d3.select(this).style("fill", datum)
   })
   .on("mouseout", function(){
     d3.select(this).style("fill", "lightgrey")
   })
+
+  setTimeout(() => {
+    rects
+    .dispatch("mouseout")
+    .on("mousemove", null)
+    .on("mouseout", null)
+  }, 1000)
 
 }
 createEvent()

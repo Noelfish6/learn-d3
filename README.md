@@ -1620,3 +1620,19 @@ async function createEvent() {
   })
 ```
 
+### Day 84：Interactions - part 5
+
+销毁事件监听器，可以避免内存泄露等问题。借由使用带有 null 的 .on() 就可以销毁事件监听器：
+
+```
+  // destroy our events after 3 seconds
+  setTimeout(() => {
+    rects
+    .dispatch("mouseout")
+    .on("mousemove", null)
+    .on("mouseout", null)
+  }, 3000)
+```
+
+
+
