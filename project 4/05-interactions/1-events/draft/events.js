@@ -25,6 +25,7 @@ async function createEvent() {
     d3.select(this).style("fill", "lightgrey")
   })
 
+  // destroy our events after 3 seconds
   setTimeout(() => {
     rects
     .dispatch("mouseout")

@@ -1634,5 +1634,28 @@ async function createEvent() {
   }, 3000)
 ```
 
+### Day 85：Interactions - part 6
+以 bar chart 为例子，在图表上叠加鼠标交互。先用 css 来增加这个交互：
+
+```
+.bin rect:hover {fill: purple;}
+```
+
+针对 tooltip，需要使用JS来设置，简要代码如下：
+
+```
+binGroups.select("rect")
+    .on("mouseenter", onMouseEnter)
+    .on("mouseleave", onMouseLeave)
+
+  function onMouseEnter(datum) {
+
+  }
+
+  function onMouseLeave(datum) {
+
+  }
+```
+
 
 
