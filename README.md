@@ -1657,5 +1657,23 @@ binGroups.select("rect")
   }
 ```
 
+### Day 86：Interactions - part 7
 
+对tooltip的样式进行设置：
+
+```
+.tooltip {
+    /*opacity: 0;*/
+    position: absolute;
+    top: -12px;
+    left: 0;
+    padding: 0.6em 1em;
+    background: #fff;
+    text-align: center;
+    border: 1px solid #ddd;
+    z-index: 10;
+    transition: all 0.2s ease-out;
+    pointer-events: none;
+}
+```
 
