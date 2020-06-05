@@ -1677,3 +1677,22 @@ binGroups.select("rect")
 }
 ```
 
+### Day 87：Interactions - part 8
+让tooltip可以跟着鼠标的hover去更新数据，但目前的位置还是固定的。
+
+```
+  binGroups.select("rect")
+    .on("mouseenter", onMouseEnter)
+    .on("mouseleave", onMouseLeave)
+
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseEnter(datum) {
+    tooltip.select("#count")
+      .text(yAccessor(datum))
+  }
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/87.png)
+
+

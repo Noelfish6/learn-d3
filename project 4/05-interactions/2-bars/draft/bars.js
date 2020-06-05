@@ -114,6 +114,20 @@ async function drawBars() {
       .text("Humidity")
 
   // 7. Set up interactions
+  binGroups.select("rect")
+    .on("mouseenter", onMouseEnter)
+    .on("mouseleave", onMouseLeave)
+
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseEnter(datum) {
+    tooltip.select("#count")
+      .text(yAccessor(datum))
+  }
+
+  function onMouseLeave(datum) {
+
+  }
 
 }
 drawBars()
