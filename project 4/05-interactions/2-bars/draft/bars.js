@@ -122,12 +122,22 @@ async function drawBars() {
 
   function onMouseEnter(datum) {
     tooltip.select("#count")
-      .text(yAccessor(datum))
+      .text(yAccessor(datum));
+
+    const formatHumidity = d3.format(".2f")
+    tooltip.select("#range")
+        .text([
+          formatHumidity(datum.x0),
+          formatHumidity(datum.x1)
+        ].join(" - "))
+
   }
 
   function onMouseLeave(datum) {
 
   }
+
+
 
 }
 drawBars()

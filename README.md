@@ -1695,4 +1695,15 @@ binGroups.select("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/87.png)
 
+### Day 88：Interactions - part 9
+
+让tooltip同时展示range与count这两个数据字段。目前展示的数据过于精确（小数点后的数值全部展示出来），此时可以用 d3.format 来解决这个问题。
+
+```
+    tooltip.select("#range")
+        .text([
+          formatHumidity(datum.x0),
+          formatHumidity(datum.x1)
+        ].join(" - "))
+```
 
