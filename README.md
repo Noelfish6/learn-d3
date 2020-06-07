@@ -1707,3 +1707,23 @@ binGroups.select("rect")
         ].join(" - "))
 ```
 
+### Day 89：Interactions - part 10
+改变tooltip的位置，在每次鼠标hover的时候需要出现在该柱图上。
+
+```
+    const x = xScale(datum.x0)
+      + (xScale(datum.x1) - xScale(datum.x0)) / 2
+      + dimensions.margin.left
+
+    const y = yScale(yAccessor(datum))
+      + dimensions.margin.top
+
+    tooltip.style("transform", `translate(`
+      + `${x}px,`
+      + `${y}px`
+      + `)`)
+```
+
+但在展示上仍需要继续调整。
+
+

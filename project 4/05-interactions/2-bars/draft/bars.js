@@ -125,6 +125,19 @@ async function drawBars() {
       .text(yAccessor(datum));
 
     const formatHumidity = d3.format(".2f")
+
+    const x = xScale(datum.x0)
+      + (xScale(datum.x1) - xScale(datum.x0)) / 2
+      + dimensions.margin.left
+
+    const y = yScale(yAccessor(datum))
+      + dimensions.margin.top
+
+    tooltip.style("transform", `translate(`
+      + `${x}px,`
+      + `${y}px`
+      + `)`)
+  
     tooltip.select("#range")
         .text([
           formatHumidity(datum.x0),
