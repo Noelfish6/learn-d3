@@ -134,8 +134,8 @@ async function drawBars() {
       + dimensions.margin.top
 
     tooltip.style("transform", `translate(`
-      + `${x}px,`
-      + `${y}px`
+      + `calc( -50% + ${x}px),`
+      + `calc( -100% + ${y}px)`
       + `)`)
   
     tooltip.select("#range")

@@ -1726,4 +1726,17 @@ binGroups.select("rect")
 
 但在展示上仍需要继续调整。
 
+### Day 90：Interactions - part 11
+基于tooltip自己的高度与宽度来调整其位置，所以需要使用transform: translate()。原本就是使用这个方法，但还需要借助 css 的 calc 方法：
+
+```
+    tooltip.style("transform", `translate(`
+      + `calc( -50% + ${x}px),`
+      + `calc( -100% + ${y}px)`
+      + `)`)
+```
+
+可以前后对比一下两个方式的差异。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/90.png)
 
