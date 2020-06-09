@@ -1740,3 +1740,22 @@ binGroups.select("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/90.png)
 
+### Day 91：Interactions - part 12
+这次要针对散点图进行tooltip弹出的设置，一样是使用 selectAll 选择需要有交互的元素，即 circle，然后加上鼠标滑动的function，再分别定义这些function：
+
+```
+  bounds.selectAll("circle")
+    .on("mouseenter", onMouseEnter)
+    .on("mouseleave", onMouseLeave)
+
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseEnter(datum, index) {
+
+  }
+
+  function onMouseLeave() {
+    
+  }
+```
+
