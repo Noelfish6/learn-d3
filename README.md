@@ -1759,3 +1759,21 @@ binGroups.select("rect")
   }
 ```
 
+### Day 92：Interactions - part 13
+要在 tooltip 上展示两个数值：x 轴的 dew point，以及 y 轴的 humidity。先设置 onMouseEnter()的内容：
+
+```
+  function onMouseEnter(datum, index) {
+    const formatHumidity = d3.format(".2f")
+    tooltip.select("#humidity")
+      .text(formatHumidity(yAccessor(datum)))
+
+    const formatDewPoint = d3.format(".2f")
+    tooltip.select("#dew-point")
+      .text(formatDewPoint(xAccessor(datum)))
+
+  }
+```
+
+
+
