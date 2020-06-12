@@ -1775,5 +1775,40 @@ binGroups.select("rect")
   }
 ```
 
+### Day 93：Interactions - part 14
+再额外添加时间的展示，但目前数据是以srting来展示时间字段，对理解上不是特别友好，故需要继续特别处理。
 
+先使用 d3.timeParse 来转换string成时间字段，再使用 d3.timeFormat 来处理展示的样式，最后嵌入tooltip里面：
+
+```
+    const dateParser = d3.timeParse("%Y-%m-%d")
+    const formatDate = d3.timeFormat("%B %A %-d, %Y")
+    
+    console.log(dateParser(datum.date))
+    // Tue Oct 02 2018 00:00:00 GMT+0800
+    console.log(formatDate(dateParser(datum.date)))
+    // October Tuesday 2, 2018
+    
+    tooltip.select("#date")
+      .text(formatDate(dateParser(datum.date)))
+```
+
+然后继续再同样的function里面设置tooltip的样式：
+
+```
+    tooltip.style("transform", `translate(`
+      + `calc( -50% + ${x}px),`
+      + `calc( -100% + ${y}px)`
+      + `)`)
+```
+
+最后在 onMouseLeave 里面设置tooltip在鼠标移开后消失：
+
+```
+  function onMouseLeave() {
+    tooltip.style("opacity", 0)
+  }
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/93.png)
 
