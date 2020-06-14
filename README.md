@@ -1812,3 +1812,29 @@ binGroups.select("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/93.png)
 
+### Day 94：Interactions - part 15
+目前在hover散点图时，需要在每一个点的正上方才能弹出tooltip，这在交互上不太友好。此时可以借助 Voronoi 算法来改进这个问题。借用 delaunay 方法，嵌入在绘制数据的代码模块：
+
+```
+  const drawDots = (dataset) => {
+
+    const delaunay = d3.Delaunay.from(
+      dataset,
+      d => xScale(xAccessor(d)),
+      d => yScale(yAccessor(d))
+    )
+
+    const voronoi = delaunay.voronoi()
+
+    bounds.selectAll(".voronoi")
+      .data(dataset)
+      .enter().append("path")
+      .attr("class", "voronoi")
+      .attr("d", (d,i) => voronoi.renderCell(i))
+      .attr("stroke", "salmon")
+  }
+  drawDots(dataset)
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/94.png)
+

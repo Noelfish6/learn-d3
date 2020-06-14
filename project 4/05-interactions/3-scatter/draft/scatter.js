@@ -64,6 +64,21 @@ async function drawScatter() {
 
     const oldDots = dots.exit()
         .remove()
+
+    const delaunay = d3.Delaunay.from(
+      dataset,
+      d => xScale(xAccessor(d)),
+      d => yScale(yAccessor(d))
+    )
+
+    const voronoi = delaunay.voronoi()
+
+    bounds.selectAll(".voronoi")
+      .data(dataset)
+      .enter().append("path")
+      .attr("class", "voronoi")
+      .attr("d", (d,i) => voronoi.renderCell(i))
+      .attr("stroke", "salmon")
   }
   drawDots(dataset)
 
