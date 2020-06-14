@@ -1838,3 +1838,14 @@ binGroups.select("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/94.png)
 
+### Day 95：Interactions - part 16
+昨天绘制的voronoi图有点问题，因为没有设置宽高，导致绘制出来的图形不完整，分别对xman与ymax进行设置即可解决这个问题：
+
+```
+    const voronoi = delaunay.voronoi()
+    voronoi.xmax = dimensions.boundedWidth
+    voronoi.ymax = dimensions.boundedHeight
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/95.png)
+

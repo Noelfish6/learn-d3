@@ -72,6 +72,8 @@ async function drawScatter() {
     )
 
     const voronoi = delaunay.voronoi()
+    voronoi.xmax = dimensions.boundedWidth
+    voronoi.ymax = dimensions.boundedHeight
 
     bounds.selectAll(".voronoi")
       .data(dataset)
