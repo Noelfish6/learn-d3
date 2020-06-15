@@ -146,6 +146,10 @@ async function drawScatter() {
       + `calc( -100% + ${y}px)`
       + `)`)
 
+    bounds.selectAll("circle")
+      .filter(d => d == datum)
+      .style("fill", "maroon")
+
   }
 
   function onMouseLeave() {

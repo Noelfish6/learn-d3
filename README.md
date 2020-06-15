@@ -1849,3 +1849,16 @@ binGroups.select("rect")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/95.png)
 
+### Day 96：Interactions - part 17
+
+在鼠标hover散点时，要改变散点的颜色，所以使用如下的代码：
+
+```
+const dayDot = bounds.append("circle")
+      .filter(d => d == datum)
+      .style("fill", "maroon")
+```
+
+但会有个问题，这个效果显示的散点会被遮挡，鼠标交互是无法改变散点的排序。需要重新写别的代码来解决这个问题。
+
+
