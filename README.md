@@ -1861,4 +1861,25 @@ const dayDot = bounds.append("circle")
 
 但会有个问题，这个效果显示的散点会被遮挡，鼠标交互是无法改变散点的排序。需要重新写别的代码来解决这个问题。
 
+### Day 97：Interactions - part 18
+要解决这个问题，可以重新绘制散点：
+
+````
+
+  function onMouseEnter(datum, index) {
+    const dayDot = bounds.append("circle")
+      .attr("class", "tooltipDot")
+      .attr("cx", xScale(xAccessor(datum)))
+      .attr("cy", yScale(yAccessor(datum)))
+      .attr("r", 7)
+      .style("fill", "maroon")
+      .style("point-event", "none")
+}
+
+function onMouseLeave() {
+    d3.selectAll(".tooltipDot").remove()
+  }
+```
+
+使用这段代码可以解决原本遇到的问题，但我遇到不知名的bug，无法进行此交互。
 

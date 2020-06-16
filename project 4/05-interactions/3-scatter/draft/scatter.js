@@ -121,6 +121,14 @@ async function drawScatter() {
   const tooltip = d3.select("#tooltip")
 
   function onMouseEnter(datum, index) {
+    const dayDot = bounds.append("circle")
+      .attr("class", "tooltipDot")
+      .attr("cx", xScale(xAccessor(datum)))
+      .attr("cy", yScale(yAccessor(datum)))
+      .attr("r", 7)
+      .style("fill", "maroon")
+      .style("point-event", "none")
+
     const formatHumidity = d3.format(".2f")
     tooltip.select("#humidity")
       .text(formatHumidity(yAccessor(datum)))
@@ -146,13 +154,14 @@ async function drawScatter() {
       + `calc( -100% + ${y}px)`
       + `)`)
 
-    bounds.selectAll("circle")
-      .filter(d => d == datum)
-      .style("fill", "maroon")
+
+
 
   }
 
   function onMouseLeave() {
+    d3.selectAll(".tooltipDot").remove()
+    
     tooltip.style("opacity", 0)
   }
 
