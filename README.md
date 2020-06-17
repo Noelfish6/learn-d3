@@ -1883,3 +1883,19 @@ function onMouseLeave() {
 
 使用这段代码可以解决原本遇到的问题，但我遇到不知名的bug，无法进行此交互。
 
+### Day 98：Interactions - part 19
+今天换最后一个可视化图表示例来进行交互绘制：折线图。先设置交互：
+
+```
+  const listeningRect = bounds.append("rect")
+    .attr("class", "listening-rect")
+    .attr("width", dimensions.boundedWidth)
+    .attr("height", dimensions.boundedHeight)
+    .on("mousemove", onMouseMove)
+    .on("mouseleave", onMouseLeave)
+```
+
+此时 listeningRect 会让图表区域变成黑色：
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/98.png)
+
