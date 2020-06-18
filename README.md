@@ -1899,3 +1899,28 @@ function onMouseLeave() {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/98.png)
 
+### Day 99：Interactions - part 20
+
+针对方块是黑色的问题，对CSS进行调整即可：
+
+```
+.listening-rect {
+    fill:transparent;
+}
+```
+
+接着，设置交互的相关function，跟前面的例子一样：
+
+```
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseMove(){
+
+  }
+
+  function onMouseLeave(){
+    
+  }
+```
+
+这里需要思考当鼠标hover的时候，我们如何知道具体的位置？前面的例子使用了datum、index、nodes在此显然不适用。使用 this 方法也只能返回rect元素。
