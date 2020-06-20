@@ -1924,3 +1924,18 @@ function onMouseLeave() {
 ```
 
 这里需要思考当鼠标hover的时候，我们如何知道具体的位置？前面的例子使用了datum、index、nodes在此显然不适用。使用 this 方法也只能返回rect元素。
+
+### Day 100：Interactions - part 21
+要显示tooltip，需要需要知道hover在哪一个日期，转换x的位置数据到日期。要将range映射到domain，可以使用 intert（）方法。
+
+```
+  function onMouseMove(){
+    const mousePosition = d3.mouse(this)
+    console.log(mousePosition)
+
+    const hoverDate = xScale.intert(mousePosition[0])
+  }
+```
+
+这样就可以知道是hover在哪一个日期上，接下来需要去知道最靠近的数据点是哪一个。
+

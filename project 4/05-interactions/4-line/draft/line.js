@@ -107,7 +107,16 @@ async function drawLineChart() {
     .on("mousemove", onMouseMove)
     .on("mouseleave", onMouseLeave)
 
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseMove(){
+    const mousePosition = d3.mouse(this)
+    console.log(mousePosition)
+  }
+
+  function onMouseLeave(){
     
+  }
 
 }
 drawLineChart()
