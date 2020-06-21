@@ -112,6 +112,21 @@ async function drawLineChart() {
   function onMouseMove(){
     const mousePosition = d3.mouse(this)
     console.log(mousePosition)
+
+    const hoveredDate = xScale.invert(mousePosition[0])
+
+    // use Math.abs() to convert that distance to an absolute distance
+    const getDistanceFromHoveredDate = d => Math.abs(
+      xAccessor(d) - hoveredDate)
+
+    const closestIndex = d3.scan(dataset, (a,b) => (
+      getDistanceFromHoveredDate(a) - getDistanceFromHoveredDate(b)
+    )) 
+
+    const closestDataPoint = dataset[closestIndex]
+
+    console.table(closestDataPoint)
+
   }
 
   function onMouseLeave(){

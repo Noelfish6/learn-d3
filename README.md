@@ -1864,7 +1864,7 @@ const dayDot = bounds.append("circle")
 ### Day 97：Interactions - part 18
 要解决这个问题，可以重新绘制散点：
 
-````
+```
 
   function onMouseEnter(datum, index) {
     const dayDot = bounds.append("circle")
@@ -1926,16 +1926,43 @@ function onMouseLeave() {
 这里需要思考当鼠标hover的时候，我们如何知道具体的位置？前面的例子使用了datum、index、nodes在此显然不适用。使用 this 方法也只能返回rect元素。
 
 ### Day 100：Interactions - part 21
-要显示tooltip，需要需要知道hover在哪一个日期，转换x的位置数据到日期。要将range映射到domain，可以使用 intert（）方法。
+要显示tooltip，需要需要知道hover在哪一个日期，转换x的位置数据到日期。要将range映射到domain，可以使用 invert（）方法。
 
 ```
   function onMouseMove(){
     const mousePosition = d3.mouse(this)
     console.log(mousePosition)
 
-    const hoverDate = xScale.intert(mousePosition[0])
+    const hoverDate = xScale.invert(mousePosition[0])
   }
 ```
 
 这样就可以知道是hover在哪一个日期上，接下来需要去知道最靠近的数据点是哪一个。
 
+### Day 101：Interactions - part 22
+使用 d3.scan 可以帮助找到一个变量是否匹配到筛选过的清单。
+
+d3.scan 包含了两个参数：1.array；2. comparator function （可选）
+
+分成下面三个步骤：1.使用 Math.abs() 来转换距离为绝对距离；2.获取最靠近hover的date的index；3.获取index的数据点
+
+```
+
+  function onMouseMove(){
+
+    // use Math.abs() to convert that distance to an absolute distance
+    const getDistanceFromHoveredDate = d => Math.abs(
+      xAccessor(d) - hoveredDate)
+
+    // get the index of the closest data point to our hovered date
+    const closestIndex = d3.scan(dataset, (a,b) => (
+      getDistanceFromHoveredDate(a) - getDistanceFromHoveredDate(b)
+    )) 
+
+    // grab the data point at that index
+    const closestDataPoint = dataset[closestIndex]
+
+    console.table(closestDataPoint)
+
+  }
+```
