@@ -119,17 +119,37 @@ async function drawLineChart() {
     const getDistanceFromHoveredDate = d => Math.abs(
       xAccessor(d) - hoveredDate)
 
+    // get the index of the closest data point to our hovered date
     const closestIndex = d3.scan(dataset, (a,b) => (
       getDistanceFromHoveredDate(a) - getDistanceFromHoveredDate(b)
     )) 
 
+    // grab the data point at that index
     const closestDataPoint = dataset[closestIndex]
 
     console.table(closestDataPoint)
 
+    const closestXValue = xAccessor(closestDataPoint)
+    const closestYValue = yAccessor(closestDataPoint)
+
+    const formatDate = d3.timeFormat("%B %A %-d, %Y")
+    tooltip.select("#date")
+      .text(formatDate(closestXValue))
+
+    const x = xScale(closestXValue) + dimensions.margin.left
+    const y = yScale(closestYValue) + dimensions.margin.top
+
+    tooltip.style("transform", `translate(`
+      + `calc( -50% + ${x}px),`
+      + `calc ( -100% + ${y}px)`
+      +  `)`)
+
+    tooltip.style("opacity", 1)
+
   }
 
   function onMouseLeave(){
+    tooltip.style("opacity", 0)
     
   }
 

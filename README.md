@@ -1966,3 +1966,42 @@ d3.scan 包含了两个参数：1.array；2. comparator function （可选）
 
   }
 ```
+
+### Day 102：Interactions - part 23
+
+对tooltip进行数据与样式的设置：
+
+```
+function onMouseMove(){
+    // grab the data point at that index
+    const closestDataPoint = dataset[closestIndex]
+
+    console.table(closestDataPoint)
+
+    const closestXValue = xAccessor(closestDataPoint)
+    const closestYValue = yAccessor(closestDataPoint)
+
+    const formatDate = d3.timeFormat("%B %A %-d, %Y")
+    tooltip.select("#date")
+      .text(formatDate(closestXValue))
+
+    const x = xScale(closestXValue) + dimensions.margin.left
+    const y = yScale(closestYValue) + dimensions.margin.top
+
+    tooltip.style("transform", `translate(`
+      + `calc( -50% + ${x}px),`
+      + `calc ( -100% + ${y}px)`
+      +  `)`)
+
+    tooltip.style("opacity", 1)
+}
+
+  function onMouseLeave(){
+    tooltip.style("opacity", 0)
+    
+  }
+  
+```
+
+但目前遇到一个bug，tooltip不会跟随鼠标移动，还需要去找出具体的问题。
+
