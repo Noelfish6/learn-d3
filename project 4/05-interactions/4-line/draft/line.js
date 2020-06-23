@@ -109,6 +109,13 @@ async function drawLineChart() {
 
   const tooltip = d3.select("#tooltip")
 
+  const tooltipCircle = bounds.append("circle")
+    .attr("r", 4)
+    .attr("stroke", "#af9358")
+    .attr("fill", "white")
+    .attr("stroke-width", 2)
+    .style("opacity", 0)
+
   function onMouseMove(){
     const mousePosition = d3.mouse(this)
     console.log(mousePosition)
@@ -146,10 +153,17 @@ async function drawLineChart() {
 
     tooltip.style("opacity", 1)
 
+    tooltipCircle
+      .attr("cx", xScale(closestXValue))
+      .attr("cy", yScale(closestYValue))
+      .style("opacity", 1)
+
   }
 
   function onMouseLeave(){
     tooltip.style("opacity", 0)
+    tooltipCircle.style("opacity", 0)
+
     
   }
 

@@ -2005,3 +2005,28 @@ function onMouseMove(){
 
 但目前遇到一个bug，tooltip不会跟随鼠标移动，还需要去找出具体的问题。
 
+### Day 103：Interactions - part 24
+本章节最后一个教程。目前hover在折线图上时，无法得知目前hover的位置，此教程将会在折线图上加入一个圆点，来辅助图表理解。
+
+```
+  const tooltipCircle = bounds.append("circle")
+    .attr("r", 4)
+    .attr("stroke", "#af9358")
+    .attr("fill", "white")
+    .attr("stroke-width", 2)
+    .style("opacity", 0)
+    
+    function onMouseMove(){
+       tooltipCircle
+      .attr("cx", xScale(closestXValue))
+      .attr("cy", yScale(closestYValue))
+      .style("opacity", 1)
+    }
+    
+    function onMouseLeave(){
+    tooltipCircle.style("opacity", 0)
+  }
+  
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/103.png)
