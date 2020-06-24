@@ -2030,3 +2030,10 @@ function onMouseMove(){
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/103.png)
+
+### Day 104：Making a map - part 1
+绘制choropleth map，并使用 d3-geo模块。为了绘制地图，需要下载shapefile并且转换成GeoJSON，这个转换需要使用gdal。下载gdal的时间比较久，约数十分钟。下载好后，在终端使用下面的代码来进行转换：
+
+```
+ogr2ogr -f GeoJSON ./world-geojson2.json ./ne_50m_admin_0_countries.shp
+```
