@@ -2037,3 +2037,20 @@ function onMouseMove(){
 ```
 ogr2ogr -f GeoJSON ./world-geojson2.json ./ne_50m_admin_0_countries.shp
 ```
+
+### Day 105：Making a map - part 2
+读取世界地图的json档案，并用console.log来观看数据的维度有哪一些：
+
+```
+const countryShapes = await d3.json("./../world-geojson.json")
+console.log(countryShapes)
+```
+
+有四个维度：crs、features、name、type。针对features继续深入，可以看到我们感兴趣的数据，例如经纬度、国家信息。
+
+接下来，要创建accessor function，用来获取国家ID（进而获取人口成长数据集的指标）。另外，在hover国家时也希望展示国家的名称。
+
+```
+  const countryNameAccessor = d => d.properties["NAME"]
+  const countryIdAccessor = d => d.properties["ADM0_A3_IS"]
+```
