@@ -2054,3 +2054,27 @@ console.log(countryShapes)
   const countryNameAccessor = d => d.properties["NAME"]
   const countryIdAccessor = d => d.properties["ADM0_A3_IS"]
 ```
+
+### Day 106：Making a map - part 3
+读取国家人口数据，因为数据包含在这个可视化用不到的维度，所以定义一个metric来只使用这个我们感兴趣的维度：
+
+```
+  const dataset = await d3.csv("./../data_bank_data.csv")
+  const metric = "Population growth (annual %)"
+```
+
+为了以一种比较简便的方式来关联国家id与数值，所以制造一个object来完成这个目的，并对数据进行处理：
+
+```
+  let metricDataByCountry = {}
+  
+    dataset.forEach(d => {
+  	if(d["Series Name"] != metric) return
+  		metricDataByCountry[d["Country Code"]] = +d["2017 [YR2017]"] || 0
+  })
+```
+
+遍历一遍所有的数据维度，若Series Name等于metric，则对metricDataByCountry新增一个数值。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/106.png)
+
