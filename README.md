@@ -2078,3 +2078,21 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/106.png)
 
+### Day 107：Making a map - part 4
+今天的任务是制造图表的维度。
+
+```
+  let dimensions = {
+  	width: window.innerWidth * 0.9,
+  	margin:{
+  		top:10,
+  		right:10,
+  		bottom:10,
+  		left:10,
+  	},
+  }
+  dimensions.boundedWidth = dimensions.width
+  	- dimensions.margin.left
+  	- dimensions.margin.right
+```
+
