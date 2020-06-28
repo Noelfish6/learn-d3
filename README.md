@@ -2096,3 +2096,8 @@ console.log(countryShapes)
   	- dimensions.margin.right
 ```
 
+### Day 108：Making a map - part 5
+关于映射方式。要绘制平面地图，一定会需要用到映射，从3D向2D投射的方式有好几种，最常见的是墨卡托投影，此投影方式能够较好地呈现国家形状，但在维度较高的地图则会有过度放大面积的问题。
+
+
+
