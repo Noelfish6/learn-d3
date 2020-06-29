@@ -2099,5 +2099,19 @@ console.log(countryShapes)
 ### Day 108：Making a map - part 5
 关于映射方式。要绘制平面地图，一定会需要用到映射，从3D向2D投射的方式有好几种，最常见的是墨卡托投影，此投影方式能够较好地呈现国家形状，但在维度较高的地图则会有过度放大面积的问题。
 
+### Day 109：Making a map - part 6
+完成图表维度的制作。使用 .fitWidth() 方法，可以根据GeoJSON的数值来更新projection的大小。
 
+```
+  const sphere = ({type:"Sphere"})
+  const projection = d3.geoEqualEarth()
+  	.fitWidth(dimensions.boundedWidth, sphere)
 
+  const pathGenerator = d3.geoPath(projection)
+  const [[x0, y0], [x1, y1]] = pathGenerator.bounds(sphere)
+
+  dimensions.boundedHeight = y1
+  dimensions.height = dimensions.boundedHeight
+  	+ dimensions.margin.top
+  	+ dimensions.margin.bottom
+```
