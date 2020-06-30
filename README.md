@@ -2115,3 +2115,20 @@ console.log(countryShapes)
   	+ dimensions.margin.top
   	+ dimensions.margin.bottom
 ```
+
+### Day 110：Making a map - part 7
+绘制画布。
+
+```
+  const wrapper = d3.select("#wrapper")
+  	.append("svg")
+  	.attr("width", dimensions.width)
+  	.attr("height", dimensions.height)
+
+  const bounds = wrapper.append("g")
+  	.style("transform", `translate(${
+  		dimensions.margin.left
+  	}px, ${
+  		dimensions.margin.top
+  	}px)`)
+```
