@@ -2132,3 +2132,16 @@ console.log(countryShapes)
   		dimensions.margin.top
   	}px)`)
 ```
+
+### Day 111：Making a map - part 8
+生成scale，把人口数值转换成颜色。
+
+```
+  const metricValues = Object.values(metricDataByCountry)
+
+  const maxChange = d3.max([-metricValueExtent[0], metricValueExtent[1]])
+
+  const colorScale = d3.scaleLinear()
+  	.domain([-maxChange, 0, maxChange])
+  	.range(["indigo", "white", "darkgreen"])
+```
