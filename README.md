@@ -2145,3 +2145,13 @@ console.log(countryShapes)
   	.domain([-maxChange, 0, maxChange])
   	.range(["indigo", "white", "darkgreen"])
 ```
+
+### Day 112：Making a map - part 9
+绘制数据——先绘制地球外形。
+
+```
+  const earth = bounds.append("path")
+  	.attr("class", "earth")
+  	.attr("d", pathGenerator(sphere))
+```
+

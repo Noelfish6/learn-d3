@@ -52,12 +52,19 @@ async function drawMap() {
   	}px)`)
 
   const metricValues = Object.values(metricDataByCountry)
+  const metricValueExtent = d3.extent(metricValues)
 
   const maxChange = d3.max([-metricValueExtent[0], metricValueExtent[1]])
 
   const colorScale = d3.scaleLinear()
   	.domain([-maxChange, 0, maxChange])
   	.range(["indigo", "white", "darkgreen"])
+
+  const earth = bounds.append("path")
+  	.attr("class", "earth")
+  	.attr("d", pathGenerator(sphere))
+
+
 
 }
 drawMap()
