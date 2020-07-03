@@ -2155,3 +2155,18 @@ console.log(countryShapes)
   	.attr("d", pathGenerator(sphere))
 ```
 
+### Day 113：Making a map - part 10
+绘制数据——经纬度。
+
+```
+
+  const graticuleJson = d3.geoGraticule10()
+
+  const graticule = bounds.append("path")
+  	.attr("class", "graticule")
+  	.attr("d", pathGenerator(graticuleJson))
+  	
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/113.png)
+

@@ -64,6 +64,11 @@ async function drawMap() {
   	.attr("class", "earth")
   	.attr("d", pathGenerator(sphere))
 
+  const graticuleJson = d3.geoGraticule10()
+
+  const graticule = bounds.append("path")
+  	.attr("class", "graticule")
+  	.attr("d", pathGenerator(graticuleJson))
 
 
 }
