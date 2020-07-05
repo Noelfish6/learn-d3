@@ -2170,3 +2170,22 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/113.png)
 
+### Day 114：Making a map - part 11
+绘制数据——国家。
+
+```
+  const cuntries = bounds.selectAll(".country")
+  	.data(countryShapes.features)
+  	.enter().append("path")
+  	.attr("class", "country")
+  	.attr("d", pathGenerator)
+  	.attr("fill", d=> {
+
+
+  	const metricValue = metricDataByCountry[countryIdAccessor(d)]
+  	if (typeof metricValue == "undefined") return "#e2e6e9"
+  	return colorScale(metricValue)
+  	})
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/114.png)

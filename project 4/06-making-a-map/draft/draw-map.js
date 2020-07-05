@@ -70,6 +70,19 @@ async function drawMap() {
   	.attr("class", "graticule")
   	.attr("d", pathGenerator(graticuleJson))
 
+  const cuntries = bounds.selectAll(".country")
+  	.data(countryShapes.features)
+  	.enter().append("path")
+  	.attr("class", "country")
+  	.attr("d", pathGenerator)
+  	.attr("fill", d=> {
+
+
+  	const metricValue = metricDataByCountry[countryIdAccessor(d)]
+  	if (typeof metricValue == "undefined") return "#e2e6e9"
+  	return colorScale(metricValue)
+  	})
+
 
 }
 drawMap()
