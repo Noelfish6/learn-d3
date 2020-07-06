@@ -83,6 +83,20 @@ async function drawMap() {
   	return colorScale(metricValue)
   	})
 
+  const legendGroup = wrapper.append("g")
+  	.attr("transform", `translate(${
+  		120
+  	},${
+  		dimensions.width < 800
+  		? dimensions.boundedHeight - 30
+  		: dimensions.boundedHeight * 0.5
+  	})`)
+
+  const legendTitle = legendGroup.append("text")
+  	.attr("y", -23)
+  	.attr("class", "legend-title")
+  	.text("Population growth")
+
 
 }
 drawMap()

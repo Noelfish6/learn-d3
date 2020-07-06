@@ -2189,3 +2189,25 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/114.png)
+
+### Day 115：Making a map - part 12
+绘制剩余部分——图例的标题。
+
+```
+  const legendGroup = wrapper.append("g")
+  	.attr("transform", `translate(${
+  		120
+  	},${
+  		dimensions.width < 800
+  		? dimensions.boundedHeight - 30
+  		: dimensions.boundedHeight * 0.5
+  	})`)
+
+  const legendTitle = legendGroup.append("text")
+  	.attr("y", -23)
+  	.attr("class", "legend-title")
+  	.text("Population growth")
+```
+
+
+
