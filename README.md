@@ -2209,5 +2209,13 @@ console.log(countryShapes)
   	.text("Population growth")
 ```
 
+### Day 116：Making a map - part 13
+绘制剩余部分——图例的副标题。
 
+```
+  const legendByline = legendGroup.append("text")
+  	.attr("y", -9)
+  	.attr("class", "legend-byline")
+  	.text("Percent change in 2017")
+```
 

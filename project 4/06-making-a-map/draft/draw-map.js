@@ -78,10 +78,10 @@ async function drawMap() {
   	.attr("fill", d=> {
 
 
-  	const metricValue = metricDataByCountry[countryIdAccessor(d)]
-  	if (typeof metricValue == "undefined") return "#e2e6e9"
-  	return colorScale(metricValue)
-  	})
+const metricValue = metricDataByCountry[countryIdAccessor(d)]
+	if (typeof metricValue == "undefined") return "#e2e6e9"
+	return colorScale(metricValue)
+	})
 
   const legendGroup = wrapper.append("g")
   	.attr("transform", `translate(${
@@ -97,6 +97,10 @@ async function drawMap() {
   	.attr("class", "legend-title")
   	.text("Population growth")
 
+  const legendByline = legendGroup.append("text")
+  	.attr("y", -9)
+  	.attr("class", "legend-byline")
+  	.text("Percent change in 2017")
 
 }
 drawMap()
