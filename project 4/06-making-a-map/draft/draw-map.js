@@ -102,5 +102,28 @@ const metricValue = metricDataByCountry[countryIdAccessor(d)]
   	.attr("class", "legend-byline")
   	.text("Percent change in 2017")
 
+  const defs = wrapper.append("defs") // for storing the gradient
+  const legendGradiendId = "legend-gradient" // define a variable to hold the id of the gradient
+  const gradient = defs.append("linearGradient")
+  	.attr("id", legendGradiendId)
+  	.selectAll("stop")
+  	.data(colorScale.range())
+  	.enter().append("stop")
+  	.attr("stop-color", d => d)
+  	.attr("offset", (d, i) => `${
+  		i * 100 / 2
+  	}%`)
+
+  const legendWidth = 120
+  const legendHeight = 16
+  const legendGradient = legendGroup.append("rect")
+  	.attr("x", -legendWidth / 20)
+  	.attr("height", legendHeight)
+  	.attr("width", legendWidth)
+  	.style("fill", `url(#${legendGradiendId})`)
+
+
+
+
 }
 drawMap()
