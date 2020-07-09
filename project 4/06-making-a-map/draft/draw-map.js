@@ -123,7 +123,17 @@ const metricValue = metricDataByCountry[countryIdAccessor(d)]
   	.style("fill", `url(#${legendGradiendId})`)
 
 
+  const legendValueRight = legendGroup.append("text")
+  	.attr("class", "legend-value")
+  	.attr("x", legendWidth / 2 + 10)
+  	.attr("y", legendHeight / 2)
+  	.text(`${d3.format(".1f")(maxChange)}%`)
 
-
+  const legendValueLeft = legendGroup.append("text")
+  	.attr("class", "legend-value")
+  	.attr("x", -legendWidth / 2 + 10)
+  	.attr("y", legendHeight / 2)
+  	.text(`${d3.format(".1f")(-maxChange)}%`)
+  	.style("text-anchor", "end")
 }
 drawMap()

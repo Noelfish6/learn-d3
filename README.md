@@ -2245,3 +2245,26 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/117.png)
+
+### Day 118：Making a map - part 15
+
+在图例上面标注最大、最小值。目前为止没有很好地对齐，还需要继续调整。
+
+```
+
+  const legendValueRight = legendGroup.append("text")
+  	.attr("class", "legend-value")
+  	.attr("x", legendWidth / 2 + 10)
+  	.attr("y", legendHeight / 2)
+  	.text(`${d3.format(".1f")(maxChange)}%`)
+
+  const legendValueLeft = legendGroup.append("text")
+  	.attr("class", "legend-value")
+  	.attr("x", -legendWidth / 2 + 10)
+  	.attr("y", legendHeight / 2)
+  	.text(`${d3.format(".1f")(-maxChange)}%`)
+  	.style("text-anchor", "end")
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/118.png)
+
