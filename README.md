@@ -2268,3 +2268,25 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/118.png)
 
+### Day 119：Making a map - part 16
+
+利用浏览器的功能，在地图上标示出自己的位置。
+
+```
+  navigator.geolocation.getCurrentPosition(myPosition => {
+  	const [x, y] = projection([
+  		myPosition.coords.longitude,
+  		myPosition.coords.latitude
+  	])
+  	const myLocation = bounds.append("circle")
+  		.attr("class", "my-location")
+  		.attr("cx", x)
+  		.attr("cy", y)
+  		.attr("r", 0)
+  		.transition().duration(500)
+  		.attr("r", 10)
+  })
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/119.png)
+

@@ -135,5 +135,19 @@ const metricValue = metricDataByCountry[countryIdAccessor(d)]
   	.attr("y", legendHeight / 2)
   	.text(`${d3.format(".1f")(-maxChange)}%`)
   	.style("text-anchor", "end")
+
+  navigator.geolocation.getCurrentPosition(myPosition => {
+  	const [x, y] = projection([
+  		myPosition.coords.longitude,
+  		myPosition.coords.latitude
+  	])
+  	const myLocation = bounds.append("circle")
+  		.attr("class", "my-location")
+  		.attr("cx", x)
+  		.attr("cy", y)
+  		.attr("r", 0)
+  		.transition().duration(500)
+  		.attr("r", 10)
+  })
 }
 drawMap()
