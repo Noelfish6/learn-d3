@@ -70,7 +70,7 @@ async function drawMap() {
   	.attr("class", "graticule")
   	.attr("d", pathGenerator(graticuleJson))
 
-  const cuntries = bounds.selectAll(".country")
+  const countries = bounds.selectAll(".country")
   	.data(countryShapes.features)
   	.enter().append("path")
   	.attr("class", "country")
@@ -149,5 +149,19 @@ const metricValue = metricDataByCountry[countryIdAccessor(d)]
   		.transition().duration(500)
   		.attr("r", 10)
   })
+
+  countries.on("mouseenter", onMouseEnter)
+  	.on("mouseleave", onMouseLeave)
+
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseEnter(datum){
+  	tooltip.style("opacity", 1)
+  }
+
+  function onMouseLeave(datum){
+  	tooltip.style("opacity", 0)
+  }
+
 }
 drawMap()

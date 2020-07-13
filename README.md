@@ -2290,3 +2290,23 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/119.png)
 
+### Day 120：Making a map - part 17
+
+加入交互，展示提示框。
+
+```
+  countries.on("mouseenter", onMouseEnter)
+  	.on("mouseleave", onMouseLeave)
+
+  const tooltip = d3.select("#tooltip")
+
+  function onMouseEnter(datum){
+  	tooltip.style("opacity", 1)
+  }
+
+  function onMouseLeave(datum){
+  	tooltip.style("opacity", 0)
+  }
+```
+
+但细节还需要调整。
