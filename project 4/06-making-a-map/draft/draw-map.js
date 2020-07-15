@@ -157,6 +157,25 @@ const metricValue = metricDataByCountry[countryIdAccessor(d)]
 
   function onMouseEnter(datum){
   	tooltip.style("opacity", 1)
+
+  	const metricValue = metricDataByCountry[countryIdAccessor(datum)]
+
+  	tooltip.select("#country")
+  		.text(countryNameAccessor(datum))
+
+  	tooltip.select("#value")
+  		.text(`${d3.format(",.2f")(metricValue || 0)}%`)
+
+  	const [centerX, centerY] = pathGenerator.centroid(datum)
+
+  	const x = centerX + dimensions.margin.left
+  	const y = centerY + dimensions.margin.top
+
+
+  	tooltip.style("transform", `translate(`
+  		+ `calc( -50% + ${x}px),`
+  		+ `calc( -100% + ${y}px)`
+  		+ `)`)
   }
 
   function onMouseLeave(datum){

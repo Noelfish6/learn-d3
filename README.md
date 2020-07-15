@@ -2310,3 +2310,39 @@ console.log(countryShapes)
 ```
 
 但细节还需要调整。
+
+### Day 121：Making a map - part 18
+
+修改tooltip——让鼠标交互时可以随着更改国家名称与数值。
+
+```
+  function onMouseEnter(datum){
+  	tooltip.style("opacity", 1)
+
+  	const metricValue = metricDataByCountry[countryIdAccessor(datum)]
+
+  	tooltip.select("#country")
+  		.text(countryNameAccessor(datum))
+
+  	tooltip.select("#value")
+  		.text(`${d3.format(",.2f")(metricValue || 0)}%`)
+  }
+```
+
+### Day 122：Making a map - part 19
+调整tooltip，让它可以随着鼠标移动。
+
+```
+  	const [centerX, centerY] = pathGenerator.centroid(datum)
+
+  	const x = centerX + dimensions.margin.left
+  	const y = centerY + dimensions.margin.top
+
+
+  	tooltip.style("transform", `translate(`
+  		+ `calc( -50% + ${x}px),`
+  		+ `calc( -100% + ${y}px)`
+  		+ `)`)
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/120.png)
