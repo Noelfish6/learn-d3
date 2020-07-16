@@ -2346,3 +2346,12 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/120.png)
+
+### Day 123：Making a map - part 20
+地图绘制在这告一段落，简要复习绘制地图的步骤：
+1、读取世界地图的json档案、国家人口数据
+2、绘制图表的基础维度（宽度、边距、地图映射方式）
+3、绘制空白画布、用scale转换数据
+4、绘制数据（地球外形、经纬度、国家）
+5、绘制剩余部分（图例、提示框）
+
