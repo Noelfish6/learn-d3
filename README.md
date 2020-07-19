@@ -2361,3 +2361,22 @@ console.log(countryShapes)
 示例1：humidity timeline。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/124.png)
+
+### Day 124：Radar Weather Chart - part 1
+开始学习较为困难的图表，这次学习的例子是雷达气候图。
+
+设置变量：
+
+```
+  const dataset = await d3.json("./../../my_weather_data.json")
+
+  const temperatureMinAccessor = d => d.temperatureMin
+  const temperatureMaxAccessor = d => d.temperatureMax
+  const uvAccessor = d => d.uvIndex
+  const precipitationProbabilityAccessor = d => d.precipProbability
+  const precipitationTypeAccessor = d => d.precipType
+  const cloudAccessor = d => d.cloudCover
+  const dateParser = d3.timeParse("%Y-%m-%d")
+  const dateAccessor = d => dateParser(d.date)
+```
+
