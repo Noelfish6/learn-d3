@@ -2355,3 +2355,9 @@ console.log(countryShapes)
 4、绘制数据（地球外形、经纬度、国家）
 5、绘制剩余部分（图例、提示框）
 
+### Day 124：数据可视化基础 - part 1
+本章回顾这几次的范例练习，从数据可视化的类型到数据本身的类似做了一个简要的阐述，并提供了几个设计上的技巧。接下来借着重新设计数据可视化范例，来直接演示如何使用这些技巧。
+
+示例1：humidity timeline。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/124.png)
