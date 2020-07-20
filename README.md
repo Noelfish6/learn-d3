@@ -2380,3 +2380,12 @@ console.log(countryShapes)
   const dateAccessor = d => dateParser(d.date)
 ```
 
+### Day 125：Radar Weather Chart - part 2
+制作数据的scale。
+
+```
+  const angleScale = d3.selectTime()
+      .domain(d3.extent(dataset, dateAccessor))
+      .range([0, Math.PI * 2])
+```
+
