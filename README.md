@@ -2389,3 +2389,10 @@ console.log(countryShapes)
       .range([0, Math.PI * 2])
 ```
 
+### Day 126：Radar Weather Chart - part 3
+绘制网格。
+
+```
+  const peripherals = bounds.append("g")
+```
+
