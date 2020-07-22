@@ -2396,3 +2396,12 @@ console.log(countryShapes)
   const peripherals = bounds.append("g")
 ```
 
+### Day 127：Radar Weather Chart - part 4
+绘制月份网格，较为复杂，拆成数个部分进行绘制。
+
+```
+  const months = d3.timeMonths(...angleScale.domain())
+  const gridLines = months.forEach(month => {
+    return peripherals.append("line")
+  })
+```

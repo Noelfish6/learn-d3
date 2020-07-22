@@ -2,7 +2,16 @@ async function drawChart() {
 
   // 1. Access data
 
-  let dataset = await d3.json("./../../my_weather_data.json")
+  const dataset = await d3.json("./../../my_weather_data.json")
+
+  const temperatureMinAccessor = d => d.temperatureMin
+  const temperatureMaxAccessor = d => d.temperatureMax
+  const uvAccessor = d => d.uvIndex
+  const precipitationProbabilityAccessor = d => d.precipProbability
+  const precipitationTypeAccessor = d => d.precipType
+  const cloudAccessor = d => d.cloudCover
+  const dateParser = d3.timeParse("%Y-%m-%d")
+  const dateAccessor = d => dateParser(d.date)
 
   // 2. Create chart dimensions
 
@@ -33,13 +42,17 @@ async function drawChart() {
       .style("transform", `translate(${dimensions.margin.left}px, ${dimensions.margin.top}px)`)
 
   // 4. Create scales
-
-
+  const angleScale = d3.scaleTime()
+      .domain(d3.extent(dataset, dateAccessor))
+      .range([0, Math.PI * 2])
   // 5. Draw data
 
 
   // 6. Draw peripherals
+  const peripherals = bounds.append("g")
 
+  const months = d3.timeMonths(...angleScale.domain())
+  console.log(months)
 
   // 7. Set up interactions
 
