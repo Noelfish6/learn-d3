@@ -2405,3 +2405,16 @@ console.log(countryShapes)
     return peripherals.append("line")
   })
 ```
+
+### Day 128：Radar Weather Chart - part 5
+
+调整bounds的位置，这样后面的计算会简单一些。
+
+```
+  const bounds = wrapper.append("g")
+      .style("transform", `translate(${
+        dimensions.margin.left + dimensions.boundedRadius
+      }px, ${
+        dimensions.margin.top + dimensions.boundedRadius}px)`)
+```
+
