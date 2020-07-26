@@ -2439,3 +2439,23 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/129.png)
+
+### Day 130：Radar Weather Chart - part 7
+
+绘制月份标签。在 month.forEach 里面输入以下代码：
+
+```
+  peripherals.append("line")
+    .attr("x2", x)
+    .attr("y2", y)
+    .attr("class", "grid-line")
+
+  const [labelX, labelY] = getCoordinatesForAngle(angle, 1.38)
+  peripherals.append("text")
+  .attr("x", labelX)
+  .attr("y", labelY)
+  .attr("class", "tick-label")
+  .text(d3.timeFormat("%b")(month))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/130.png)

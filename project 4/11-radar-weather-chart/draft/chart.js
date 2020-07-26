@@ -68,11 +68,20 @@ async function drawChart() {
     const angle = angleScale(month)
     const [x, y] = getCoordinatesForAngle(angle)
 
-    peripherals.append("line")
-      .attr("x2", x)
-      .attr("y2", y)
-      .attr("class", "grid-line")
+  peripherals.append("line")
+    .attr("x2", x)
+    .attr("y2", y)
+    .attr("class", "grid-line")
+
+  const [labelX, labelY] = getCoordinatesForAngle(angle, 1.38)
+  peripherals.append("text")
+  .attr("x", labelX)
+  .attr("y", labelY)
+  .attr("class", "tick-label")
+  .text(d3.timeFormat("%b")(month))
   })
+
+
 
   // 7. Set up interactions
 
