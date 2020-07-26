@@ -39,7 +39,10 @@ async function drawChart() {
       .attr("height", dimensions.height)
 
   const bounds = wrapper.append("g")
-      .style("transform", `translate(${dimensions.margin.left}px, ${dimensions.margin.top}px)`)
+      .style("transform", `translate(${
+        dimensions.margin.left + dimensions.boundedRadius
+      }px, ${
+        dimensions.margin.top + dimensions.boundedRadius}px)`)
 
   // 4. Create scales
   const angleScale = d3.scaleTime()
@@ -52,7 +55,24 @@ async function drawChart() {
   const peripherals = bounds.append("g")
 
   const months = d3.timeMonths(...angleScale.domain())
-  console.log(months)
+  const gridLines = months.forEach(month => {
+    return peripherals.append("line")
+  })
+
+  const getCoordinatesForAngle = (angle, offset=1) => [
+    Math.cos(angle - Math.PI / 2) * dimensions.boundedRadius * offset,
+    Math.sin(angle - Math.PI / 2) * dimensions.boundedRadius * offset,
+  ]
+
+  months.forEach(month => {
+    const angle = angleScale(month)
+    const [x, y] = getCoordinatesForAngle(angle)
+
+    peripherals.append("line")
+      .attr("x2", x)
+      .attr("y2", y)
+      .attr("class", "grid-line")
+  })
 
   // 7. Set up interactions
 

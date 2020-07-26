@@ -2418,3 +2418,24 @@ console.log(countryShapes)
         dimensions.margin.top + dimensions.boundedRadius}px)`)
 ```
 
+### Day 129：Radar Weather Chart - part 6
+绘制圆形网格，每一个月有一条线。
+
+```
+  const getCoordinatesForAngle = (angle, offset=1) => [
+    Math.cos(angle - Math.PI / 2) * dimensions.boundedRadius * offset,
+    Math.sin(angle - Math.PI / 2) * dimensions.boundedRadius * offset,
+  ]
+
+  months.forEach(month => {
+    const angle = angleScale(month)
+    const [x, y] = getCoordinatesForAngle(angle)
+
+    peripherals.append("line")
+      .attr("x2", x)
+      .attr("y2", y)
+      .attr("class", "grid-line")
+  })
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/129.png)
