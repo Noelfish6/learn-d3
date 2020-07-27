@@ -2459,3 +2459,19 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/130.png)
+
+### Day 131：Radar Weather Chart - part 8
+
+些微调整 label 的位置，看起来更美观。
+
+```
+  .text(d3.timeFormat("%b")(month))
+  .style("text-anchor",
+    Math.abs(labelX) < 5 ? "middle" :
+    labelX > 0           ? "start" :
+                           "end"
+    )
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/131.png)
+

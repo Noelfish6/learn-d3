@@ -79,6 +79,11 @@ async function drawChart() {
   .attr("y", labelY)
   .attr("class", "tick-label")
   .text(d3.timeFormat("%b")(month))
+  .style("text-anchor",
+    Math.abs(labelX) < 5 ? "middle" :
+    labelX > 0           ? "start" :
+                           "end"
+    )
   })
 
 
