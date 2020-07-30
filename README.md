@@ -2475,3 +2475,18 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/131.png)
 
+### Day 132：Radar Weather Chart - part 9
+
+针对label的优化，使用css的dominant-baseline对其调整，让label可以居中对齐：
+
+```
+.tick-label { 
+    dominant-baseline: middle; 
+    fill: #8395a7; 
+    font-size: 0.7em; 
+    font-weight: 900; 
+    letter-spacing: 0.005em;
+}
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/132.png)
