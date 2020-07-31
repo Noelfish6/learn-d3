@@ -86,8 +86,30 @@ async function drawChart() {
     )
   })
 
+  const radiusScale = d3.scaleLinear()
+    .domain(d3.extent([
+      ...dataset.map(temperatureMaxAccessor),
+      ...dataset.map(temperatureMinAccessor),
+    ]))
+    .range([0, dimensions.boundedRadius])
+    .nice()
 
+  const getXFromDataPoint = (d, offset=1.4) => getCoordinatesForAngle(
+    angleScale(dateAccessor(d)),
+    offset
+  )[0] 
 
+  const getYFromDataPoint = (d, offset=1.4) => getCoordinatesForAngle(
+    angleScale(dateAccessor(d)),
+    offset
+  )[1]
+
+  const temperatureTicks = radiusScale.ticks(4)
+  const getCircles = temperatureTicks.map(d => (
+    peripherals.append("circle")
+      .attr("r", radiusScale(d))
+      .attr("class", "grid-line")
+  ))
   // 7. Set up interactions
 
 

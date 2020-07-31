@@ -28,7 +28,9 @@ body {
     font-feature-settings: 'tnum' 1;
 }
 
-.grid-line { stroke: #dadadd;
+.grid-line { 
+    stroke: #dadadd;
+    fill:none;
 }
 
 .tick-label { 

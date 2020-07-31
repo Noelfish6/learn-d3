@@ -2490,3 +2490,36 @@ console.log(countryShapes)
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/132.png)
+
+### Day 133：Radar Weather Chart - part 10
+绘制气温的网格线。输入如下的代码后，再到CSS去设置 .grid-line 的 fill 为 none 即可：
+
+```
+  const radiusScale = d3.scaleLinear()
+    .domain(d3.extent([
+      ...dataset.map(temperatureMaxAccessor),
+      ...dataset.map(temperatureMinAccessor),
+    ]))
+    .range([0, dimensions.boundedRadius])
+    .nice()
+
+  const getXFromDataPoint = (d, offset=1.4) => getCoordinatesForAngle(
+    angleScale(dateAccessor(d)),
+    offset
+  )[0] 
+
+  const getYFromDataPoint = (d, offset=1.4) => getCoordinatesForAngle(
+    angleScale(dateAccessor(d)),
+    offset
+  )[1]
+
+  const temperatureTicks = radiusScale.ticks(4)
+  const getCircles = temperatureTicks.map(d => (
+    peripherals.append("circle")
+      .attr("r", radiusScale(d))
+      .attr("class", "grid-line")
+  ))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/133.png)
+
