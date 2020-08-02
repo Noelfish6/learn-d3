@@ -110,6 +110,16 @@ async function drawChart() {
       .attr("r", radiusScale(d))
       .attr("class", "grid-line")
   ))
+
+  const tickLabels = temperatureTicks.map(d => {
+    if (!d) return
+    return peripherals.append("text")
+      .attr("x", 4)
+      .attr("y", -radiusScale(d) + 2)
+      .attr("class", "tick-label-temperature")
+      .html(`${d3.format(".0f")(d)}°F`)
+  })
+
   // 7. Set up interactions
 
 

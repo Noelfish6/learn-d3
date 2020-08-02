@@ -2523,3 +2523,20 @@ console.log(countryShapes)
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/133.png)
 
+### Day 134：Radar Weather Chart - part 11
+
+接下来需要在圆形网格上加上标签，这样才能知道这些标签的含义。
+
+```
+const tickLabels = temperatureTicks.map(d => {
+    if (!d) return
+    return peripherals.append("text")
+      .attr("x", 4)
+      .attr("y", -radiusScale(d) + 2)
+      .attr("class", "tick-label-temperature")
+      .html(`${d3.format(".0f")(d)}°F`)
+  })
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/134.png)
+
