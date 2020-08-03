@@ -2540,3 +2540,18 @@ const tickLabels = temperatureTicks.map(d => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/134.png)
 
+### Day 135：Radar Weather Chart - part 12
+
+因为标签文字跟网格重叠，阅读起来比较吃力，所以在文字的背后加上方块，以利阅读：
+
+```
+  const tickLabelBackgrounds = temperatureTicks.map(d => {
+    if(!d) return
+    return peripherals.append("rect")
+      .attr("y", -radiusScale(d) - 10)
+      .attr("width", 40)
+      .attr("height", 20)
+      .attr("fill", "#f8f9fa")
+      .attr("opacity", 0.1)
+  })
+```

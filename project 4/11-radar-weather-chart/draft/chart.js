@@ -120,6 +120,16 @@ async function drawChart() {
       .html(`${d3.format(".0f")(d)}°F`)
   })
 
+  const tickLabelBackgrounds = temperatureTicks.map(d => {
+    if(!d) return
+    return peripherals.append("rect")
+      .attr("y", -radiusScale(d) - 10)
+      .attr("width", 40)
+      .attr("height", 20)
+      .attr("fill", "#f8f9fa")
+      .attr("opacity", 0.1)
+  })
+
   // 7. Set up interactions
 
 
