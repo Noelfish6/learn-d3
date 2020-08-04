@@ -48,7 +48,6 @@ async function drawChart() {
   const angleScale = d3.scaleTime()
       .domain(d3.extent(dataset, dateAccessor))
       .range([0, Math.PI * 2])
-  // 5. Draw data
 
 
   // 6. Draw peripherals
@@ -86,13 +85,14 @@ async function drawChart() {
     )
   })
 
-  const radiusScale = d3.scaleLinear()
+  const radiusScale = d3.scaleLinear() 
     .domain(d3.extent([
       ...dataset.map(temperatureMaxAccessor),
-      ...dataset.map(temperatureMinAccessor),
+      ...dataset.map(temperatureMinAccessor), 
     ]))
     .range([0, dimensions.boundedRadius])
     .nice()
+
 
   const getXFromDataPoint = (d, offset=1.4) => getCoordinatesForAngle(
     angleScale(dateAccessor(d)),
@@ -129,6 +129,15 @@ async function drawChart() {
       .attr("fill", "#f8f9fa")
       .attr("opacity", 0.1)
   })
+
+  // 5. Draw data
+  const containsFreezing = radiusScale.domain()[0] < 32
+
+  if (containsFreezing) {
+    const freezingCircle = bounds.append("circle")
+      .attr("r", radiusScale(32))
+      .attr("class", "freezing-circle")
+  }
 
   // 7. Set up interactions
 

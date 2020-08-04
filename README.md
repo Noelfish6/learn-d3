@@ -2555,3 +2555,18 @@ const tickLabels = temperatureTicks.map(d => {
       .attr("opacity", 0.1)
   })
 ```
+
+### Day 136：Radar Weather Chart - part 13
+开始绘制数据阶段。冷冻圆圈，温度小于华氏温度32度。
+
+```
+  const containsFreezing = radiusScale.domain()[0] < 32
+
+  if (containsFreezing) {
+    const freezingCircle = bounds.append("circle")
+      .attr("r", radiusScale(32))
+      .attr("class", "freezing-circle")
+  }
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/136.png)
