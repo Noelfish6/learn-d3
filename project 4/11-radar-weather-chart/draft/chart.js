@@ -139,6 +139,15 @@ async function drawChart() {
       .attr("class", "freezing-circle")
   }
 
+  const areaGenerator = d3.areaRadial()
+    .angle(d => angleScale(dateAccessor(d)))
+    .innerRadius(d => radiusScale(temperatureMinAccessor(d)))
+    .outerRadius(d => radiusScale(temperatureMaxAccessor(d)))
+
+  const area = bounds.append("path")
+    .attr("class", "area")
+    .attr("d", areaGenerator(dataset))
+
   // 7. Set up interactions
 
 

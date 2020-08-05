@@ -2570,3 +2570,18 @@ const tickLabels = temperatureTicks.map(d => {
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/136.png)
+
+### Day 137：Radar Weather Chart - part 14
+绘制气温的面积图，但因为是要绘制气温的最高与最低值，使用 d3.area 无法绘制，而是需要使用 d3.areaRadial。
+
+```
+  const areaGenerator = d3.areaRadial()
+    .angle(d => angleScale(dateAccessor(d)))
+    .innerRadius(d => radiusScale(temperatureMinAccessor(d)))
+    .outerRadius(d => radiusScale(temperatureMaxAccessor(d)))
+
+  const area = bounds.append("path")
+    .attr("class", "area")
+    .attr("d", areaGenerator(dataset))
+```
+
