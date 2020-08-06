@@ -2585,3 +2585,31 @@ const tickLabels = temperatureTicks.map(d => {
     .attr("d", areaGenerator(dataset))
 ```
 
+### Day 138：Radar Weather Chart - part 15
+在面积图加上渐变的颜色，来加强温度数据的表现形式。
+
+先在 draw canvas 部分输入以下代码：
+
+```
+  const defs = wrapper.append("defs")
+
+  const gradientId = "temperature-gradient"
+  const gradient = defs.append("radialGradient")
+    .attr("id", gradientId)
+  const numberOfStops = 10
+  const gradientColorScale = d3.interpolateYlOrRd
+  d3.range(numberOfStops).forEach(i => {
+    gradient.append("stop")
+      .attr("offset", `${i * 100 / (numberOfStops - 1)}%`)
+      .attr("stop-color", gradientColorScale(i / (numberOfStops - 1)))
+  })
+```
+
+然后再将 area 加上一段代码，赋予渐变色：
+
+```
+.style("fill", `url(#${gradientId})`)
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/138.png)
+

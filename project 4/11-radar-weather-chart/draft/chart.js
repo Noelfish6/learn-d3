@@ -44,6 +44,19 @@ async function drawChart() {
       }px, ${
         dimensions.margin.top + dimensions.boundedRadius}px)`)
 
+  const defs = wrapper.append("defs")
+
+  const gradientId = "temperature-gradient"
+  const gradient = defs.append("radialGradient")
+    .attr("id", gradientId)
+  const numberOfStops = 10
+  const gradientColorScale = d3.interpolateYlOrRd
+  d3.range(numberOfStops).forEach(i => {
+    gradient.append("stop")
+      .attr("offset", `${i * 100 / (numberOfStops - 1)}%`)
+      .attr("stop-color", gradientColorScale(i / (numberOfStops - 1)))
+  })
+
   // 4. Create scales
   const angleScale = d3.scaleTime()
       .domain(d3.extent(dataset, dateAccessor))
@@ -147,6 +160,7 @@ async function drawChart() {
   const area = bounds.append("path")
     .attr("class", "area")
     .attr("d", areaGenerator(dataset))
+    .style("fill", `url(#${gradientId})`)
 
   // 7. Set up interactions
 
