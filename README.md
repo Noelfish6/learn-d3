@@ -2613,3 +2613,22 @@ const tickLabels = temperatureTicks.map(d => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/138.png)
 
+### Day 139：Radar Weather Chart - part 16
+
+在圆圈上面增加标记，对于有较高的UV数据（超过8）进行标记。
+
+```
+  const uvIndexThreshold = 8
+  const uvGroup = bounds.append("g")
+  const uvOffset = 0.95
+  const highUvDays = uvGroup.selectAll("line")
+    .data(dataset.filter(d => uvAccessor(d) > uvIndexThreshold))
+    .enter().append("line")
+      .attr("class", "uv-line")
+      .attr("x1", d => getXFromDataPoint(d, uvOffset))
+      .attr("x2", d => getXFromDataPoint(d, uvOffset + 0.1))
+      .attr("y1", d => getYFromDataPoint(d, uvOffset))
+      .attr("y2", d => getYFromDataPoint(d, uvOffset + 0.1))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/139.png)

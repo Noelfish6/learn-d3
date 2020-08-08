@@ -162,6 +162,18 @@ async function drawChart() {
     .attr("d", areaGenerator(dataset))
     .style("fill", `url(#${gradientId})`)
 
+  const uvIndexThreshold = 8
+  const uvGroup = bounds.append("g")
+  const uvOffset = 0.95
+  const highUvDays = uvGroup.selectAll("line")
+    .data(dataset.filter(d => uvAccessor(d) > uvIndexThreshold))
+    .enter().append("line")
+      .attr("class", "uv-line")
+      .attr("x1", d => getXFromDataPoint(d, uvOffset))
+      .attr("x2", d => getXFromDataPoint(d, uvOffset + 0.1))
+      .attr("y1", d => getYFromDataPoint(d, uvOffset))
+      .attr("y2", d => getYFromDataPoint(d, uvOffset + 0.1))
+
   // 7. Set up interactions
 
 
