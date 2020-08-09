@@ -2632,3 +2632,29 @@ const tickLabels = temperatureTicks.map(d => {
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/139.png)
+
+### Day 140：Radar Weather Chart - part 17
+
+继续绘制其他元素——气泡图，代表阴天。先设置 cloud 的 scale：
+
+```
+  const cloudRadiusScale = d3.scaleSqrt()
+    .domain(d3.extent(dataset, cloudAccessor))
+    .range([1, 10])
+```
+
+接着绘制 cloud 的散点，然后到 CSS 设置颜色与透明度：
+
+```
+  const cloudGroup = bounds.append("g")
+  const cloudOffset = 1.27
+  const cloudDots = cloudGroup.selectAll("circle")
+    .data(dataset)
+    .enter().append("circle")
+    .attr("class", "cloud-dot")
+    .attr("cx", d => getXFromDataPoint(d, cloudOffset))
+    .attr("cy", d => getYFromDataPoint(d, cloudOffset))
+    .attr("r", d => cloudRadiusScale(cloudAccessor(d)))
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/140.png)
