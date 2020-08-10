@@ -2658,3 +2658,14 @@ const tickLabels = temperatureTicks.map(d => {
 ```
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/140.png)
+
+### Day 141：Radar Weather Chart - part 18
+
+绘制降雨量概率的气泡图。先到代码的 scale 部分生成概率到气泡半径的 scale。
+
+```
+  const precipitationRadiusScale = d3.scaleSqrt()
+    .domain(d3.extent(dataset, precipitationProbabilityAccessor))
+    .range([1, 8])
+```
+
