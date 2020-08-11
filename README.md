@@ -2661,7 +2661,7 @@ const tickLabels = temperatureTicks.map(d => {
 
 ### Day 141：Radar Weather Chart - part 18
 
-绘制降雨量概率的气泡图。先到代码的 scale 部分生成概率到气泡半径的 scale。
+绘制降雨量的气泡图。先到代码的 scale 部分生成概率到气泡半径的 scale。
 
 ```
   const precipitationRadiusScale = d3.scaleSqrt()
@@ -2669,3 +2669,13 @@ const tickLabels = temperatureTicks.map(d => {
     .range([1, 8])
 ```
 
+### Day 142：Radar Weather Chart - part 19
+
+在 scale 部分，对不同降雨类型进行分类。
+
+```
+  const precipitationTypes = ["rain", "sleet", "snow"]
+  const precipitationTypeColorScale = d3.scaleOrdinal()
+    .domain(precipitationTypes)
+    .range(["#54a0ff", "#636e72", "#b2bec3"])
+``
