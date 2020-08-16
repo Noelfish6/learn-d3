@@ -2678,4 +2678,25 @@ const tickLabels = temperatureTicks.map(d => {
   const precipitationTypeColorScale = d3.scaleOrdinal()
     .domain(precipitationTypes)
     .range(["#54a0ff", "#636e72", "#b2bec3"])
-``
+```
+
+### Day 143：Radar Weather Chart - part 20
+
+绘制另外一个数据维度，一样用气泡图的方式展现：
+
+```
+  const precipitationGroup = bounds.append("g")
+  const precipitationOffset = 1.4
+  const precitipationDots = precipitationGroup.selectAll("circle")
+    .data(dataset.filter(precipitationTypeAccessor))
+    .enter().append("circle")
+    .attr("class", "precipitation-dot")
+    .attr("cx", d => getXFromDataPoint(d, precipitationOffset))
+    .attr("cy", d => getYFromDataPoint(d, precipitationOffset))
+    .attr("r", d => precipitationRadiusScale(
+      precipitationProbabilityAccessor(d)
+    ))
+    .style("fill", d => precipitationTypeColorScale(
+      precipitationTypeAccessor(d)
+    ))
+```
