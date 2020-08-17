@@ -197,7 +197,7 @@ async function drawChart() {
     .attr("r", d => cloudRadiusScale(cloudAccessor(d)))
 
   const precipitationGroup = bounds.append("g")
-  const precipitationOffset = 1.4
+  const precipitationOffset = 1.1
   const precitipationDots = precipitationGroup.selectAll("circle")
     .data(dataset.filter(precipitationTypeAccessor))
     .enter().append("circle")

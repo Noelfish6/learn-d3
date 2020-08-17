@@ -2700,3 +2700,10 @@ const tickLabels = temperatureTicks.map(d => {
       precipitationTypeAccessor(d)
     ))
 ```
+
+### Day 144：Radar Weather Chart - part 21
+
+调整offset，原先的设置让蓝色点跑到灰色点外面。
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/144.png)
+
