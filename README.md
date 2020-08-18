@@ -2707,3 +2707,33 @@ const tickLabels = temperatureTicks.map(d => {
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/144.png)
 
+### Day 145：Radar Weather Chart - part 22
+
+在图表上增加标注，帮助用户理解图表。
+
+```
+const annotationGroup = bounds.append("g")
+    const drawAnnotation = (angle, offset, text) => {
+      const [x1, y1] = getCoordinatesForAngle(angle, offset)
+      const [x2, y2] = getCoordinatesForAngle(angle, 1.27)
+
+      annotationGroup.append("line")
+        .attr("class", "annotation-line")
+        .attr("x1", x1)
+        .attr("x2", x2)
+        .attr("y1", y1)
+        .attr("y2", y2)
+
+      annotationGroup.append("text")
+        .attr("class", "annotation-text")
+        .attr("x", x2 + 6)
+        .attr("y", y2)
+        .text(text)
+    }
+
+    drawAnnotation(Math.PI * 0.23, cloudOffset, "Cloud Cover")
+    drawAnnotation(Math.PI * 0.26, precipitationOffset, "Precipitation")
+```
+
+![](https://github.com/Noelfish6/learn-d3/blob/master/pics/145.png)
+

@@ -211,6 +211,28 @@ async function drawChart() {
       precipitationTypeAccessor(d)
     ))
 
+    const annotationGroup = bounds.append("g")
+    const drawAnnotation = (angle, offset, text) => {
+      const [x1, y1] = getCoordinatesForAngle(angle, offset)
+      const [x2, y2] = getCoordinatesForAngle(angle, 1.27)
+
+      annotationGroup.append("line")
+        .attr("class", "annotation-line")
+        .attr("x1", x1)
+        .attr("x2", x2)
+        .attr("y1", y1)
+        .attr("y2", y2)
+
+      annotationGroup.append("text")
+        .attr("class", "annotation-text")
+        .attr("x", x2 + 6)
+        .attr("y", y2)
+        .text(text)
+    }
+
+    drawAnnotation(Math.PI * 0.23, cloudOffset, "Cloud Cover")
+    drawAnnotation(Math.PI * 0.26, precipitationOffset, "Precipitation")
+
   // 7. Set up interactions
 
 
