@@ -232,6 +232,17 @@ async function drawChart() {
 
     drawAnnotation(Math.PI * 0.23, cloudOffset, "Cloud Cover")
     drawAnnotation(Math.PI * 0.26, precipitationOffset, "Precipitation")
+    drawAnnotation(Math.PI * 0.734, uvOffset + 0.05, `UV Index over ${
+      uvIndexThreshold
+    }`)
+    drawAnnotation(Math.PI * 0.7, 0.5, "Temperature")
+    if (containsFreezing) {
+      drawAnnotation(
+        Math.PI * 0.9,
+        radiusScale(32) / dimensions.boundedRadius,
+        "Freezing Temperature"
+      )
+    }
 
   // 7. Set up interactions
 

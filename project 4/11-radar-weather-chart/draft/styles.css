@@ -74,3 +74,7 @@ body {
     font-size: 0.7em;
     dominant-baseline: middle;
 }
+
+.svg {
+    overflow: visible;
+}

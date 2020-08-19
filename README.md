@@ -2737,3 +2737,20 @@ const annotationGroup = bounds.append("g")
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/145.png)
 
+### Day 146：Radar Weather Chart - part 23
+
+绘制 temperature、UV Index、Freezing temperature 的标注。
+
+```
+    drawAnnotation(Math.PI * 0.734, uvOffset + 0.05, `UV Index over ${
+      uvIndexThreshold
+    }`)
+    drawAnnotation(Math.PI * 0.7, 0.5, "Temperature")
+    if (containsFreezing) {
+      drawAnnotation(
+        Math.PI * 0.9,
+        radiusScale(32) / dimensions.boundedRadius,
+        "Freezing Temperature"
+      )
+    }
+```
