@@ -244,6 +244,21 @@ async function drawChart() {
       )
     }
 
+    precipitationTypes.forEach((precipitationTypes, index) => {
+      const labelCoordinates = getCoordinatesForAngle(Math.PI * 0.26, 1.6)
+      annotationGroup.append("circle")
+        .attr("cx", labelCoordinates[0] + 15)
+        .attr("cy", labelCoordinates[1] + (16 * (index + 1)))
+        .attr("r", 4)
+        .style('opacity', 0.7)
+        .attr("fill", precipitationTypeColorScale(precipitationTypes))
+      annotationGroup.append("text")
+        .attr("class", "annotation-text")
+        .attr("x", labelCoordinates[0] + 25)
+        .attr("y", labelCoordinates[1] + (16 * (index + 1)))
+        text(precipitationTypes)
+    })
+
   // 7. Set up interactions
 
 
