@@ -2779,3 +2779,35 @@ const annotationGroup = bounds.append("g")
 但绘制出来的效果不佳，可能是排版的问题，后续再调整。
 
 ![](https://github.com/Noelfish6/learn-d3/blob/master/pics/147.png)
+
+### Day 148：Radar Weather Chart - part 25
+
+在图表上增加 tooltip。目前因为代码逻辑不对，并没有显示效果。
+
+```
+  const tooltip = d3.select("#tooltip")
+  const tooltipLine = bounds.append("path")
+    .attr("class", "tooltip-line")
+  function onMouseMove(e){
+    const [x, y] = d3.mouse(this)
+  }
+
+  function onMouseLeave(e){
+
+  }
+
+  const getAngleFromCoordinates = (x, y) => Math.atan2(y, x)
+
+  let angle = getAngleFromCoordinates(x, y) + Math.PI / 2
+
+  if (angle < 0) angle = (Math.PI * 2) + angle
+
+  const tooltipArcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(dimensions.boundedRadius * 1.6)
+    .startAngle(angle - 0.015)
+    .endAngle(angle + 0.015)
+
+  tooltipLine.attr("d", tooltipArcGenerator())
+    .style("opacity", 1)
+```

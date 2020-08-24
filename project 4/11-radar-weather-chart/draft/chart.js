@@ -256,11 +256,41 @@ async function drawChart() {
         .attr("class", "annotation-text")
         .attr("x", labelCoordinates[0] + 25)
         .attr("y", labelCoordinates[1] + (16 * (index + 1)))
-        text(precipitationTypes)
+        .text(precipitationTypes)
     })
 
   // 7. Set up interactions
+  const listenerCircle = bounds.append("circle")
+    .attr("class", "listener-circle")
+    .attr("r", dimensions.width / 2)
+    .on("mousemove", onMouseMove)
+    .on("mouseleave", onMouseLeave)
 
+  const tooltip = d3.select("#tooltip")
+  const tooltipLine = bounds.append("path")
+    .attr("class", "tooltip-line")
+  function onMouseMove(e){
+    const [x, y] = d3.mouse(this)
+  }
+
+  function onMouseLeave(e){
+
+  }
+
+  const getAngleFromCoordinates = (x, y) => Math.atan2(y, x)
+
+  let angle = getAngleFromCoordinates(x, y) + Math.PI / 2
+
+  if (angle < 0) angle = (Math.PI * 2) + angle
+
+  const tooltipArcGenerator = d3.arc()
+    .innerRadius(0)
+    .outerRadius(dimensions.boundedRadius * 1.6)
+    .startAngle(angle - 0.015)
+    .endAngle(angle + 0.015)
+
+  tooltipLine.attr("d", tooltipArcGenerator())
+    .style("opacity", 1)
 
 }
 drawChart()
