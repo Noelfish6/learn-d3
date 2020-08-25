@@ -2811,3 +2811,18 @@ const annotationGroup = bounds.append("g")
   tooltipLine.attr("d", tooltipArcGenerator())
     .style("opacity", 1)
 ```
+
+### Day 149：Radar Weather Chart - part 26
+
+然后去CSS里面设置tooltip的样式：
+
+```
+.tooltip-line {
+    fill: #8395a7;
+    fill-opacity: 0.2; 
+    mix-blend-mode: multiply; 
+    pointer-events: none;
+}
+```
+
+鉴于tooltip设置较为复杂，目前不知道是哪里出问题，先暂停这个例子。
