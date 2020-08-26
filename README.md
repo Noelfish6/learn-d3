@@ -2826,3 +2826,13 @@ const annotationGroup = bounds.append("g")
 ```
 
 鉴于tooltip设置较为复杂，目前不知道是哪里出问题，先暂停这个例子。
+
+### Day 150：Animated Sankey - part 1
+
+绘制流动桑基图。首先设置性别变量：
+
+```
+  const sexAccessor = d => d.sex
+  const sexes = ["female", "male"]
+```
+
