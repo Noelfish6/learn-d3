@@ -2836,3 +2836,20 @@ const annotationGroup = bounds.append("g")
   const sexes = ["female", "male"]
 ```
 
+### Day 151：Animated Sankey - part 2
+
+再来，设置教育变量：
+
+```
+  const educationAccessor = d => d.education
+  const educationNames = [
+    "<High School",
+    "High School",
+    "Some Post-secondary", 
+    "Post-secondary", 
+    "Associate's", 
+    "Bachelor's and up"
+  ]
+  const educationIds = d3.range(educationNames.range)
+```
+

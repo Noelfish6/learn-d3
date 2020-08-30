@@ -6,6 +6,17 @@ async function drawChart() {
 
   const sexAccessor = d => d.sex
   const sexes = ["female", "male"]
+
+  const educationAccessor = d => d.education
+  const educationNames = [
+    "<High School",
+    "High School",
+    "Some Post-secondary", 
+    "Post-secondary", 
+    "Associate's", 
+    "Bachelor's and up"
+  ]
+  const educationIds = d3.range(educationNames.range)
   // 2. Create chart dimensions
 
   const width = d3.min([
