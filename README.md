@@ -2853,3 +2853,12 @@ const annotationGroup = bounds.append("g")
   const educationIds = d3.range(educationNames.range)
 ```
 
+### Day 152：Animated Sankey - part 3
+
+设置最后一个变量：socioeconomic status。
+
+```
+  const sesAccessor = d => d.ses
+  const sesNames = ["low", "middle", "high"]
+  const sesIds = d3.range(sesNames.length)
+```
