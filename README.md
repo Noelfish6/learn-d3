@@ -2886,3 +2886,26 @@ const annotationGroup = bounds.append("g")
     })
   }) 
 ```
+
+### Day 154：Animated Sankey - part 5
+
+生成人的函数：
+
+```
+function generatePerson(){
+    const sex = getRandomValue(sexIds)
+    const ses = getRandomValue(sesIds)
+    const statusKey = getStatusKey({
+      sex: sexes[sex],
+      ses: sesNames[ses],
+    })
+    const probabilities = stackedProbabilities[statusKey]
+
+    return {
+      sex,
+      ses,
+      education: "?"
+    }
+  }
+```
+

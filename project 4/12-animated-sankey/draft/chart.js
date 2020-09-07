@@ -40,7 +40,22 @@ async function drawChart() {
     })
   }) 
 
-  console.log(stakedProbabilities)
+  function generatePerson(){
+    const sex = getRandomValue(sexIds)
+    const ses = getRandomValue(sesIds)
+    const statusKey = getStatusKey({
+      sex: sexes[sex],
+      ses: sesNames[ses],
+    })
+    const probabilities = stackedProbabilities[statusKey]
+
+    return {
+      sex,
+      ses,
+      education: "?"
+    }
+  }
+
   // 2. Create chart dimensions
 
   const width = d3.min([
