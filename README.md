@@ -2909,3 +2909,26 @@ function generatePerson(){
   }
 ```
 
+### Day 155：Animated Sankey - part 6
+
+更新 generatePerson 的 function，让education可以生成：
+
+```
+  function generatePerson(){
+    const sex = getRandomValue(sexIds)
+    const ses = getRandomValue(sesIds)
+    const statusKey = getStatusKey({
+      sex: sexes[sex],
+      ses: sesNames[ses],
+    })
+    const probabilities = stackedProbabilities[statusKey]
+    const education = d3.bisect(probabilities, Math.random())
+
+
+    return {
+      sex,
+      ses,
+      education,
+    }
+  }
+```

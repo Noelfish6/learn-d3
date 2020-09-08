@@ -6,7 +6,7 @@ async function drawChart() {
 
   const sexAccessor = d => d.sex
   const sexes = ["female", "male"]
-
+  const sexIds = d3.range(sexes.length)
   const educationAccessor = d => d.education
   const educationNames = [
     "<High School",
@@ -24,18 +24,18 @@ async function drawChart() {
 
   const getStatusKey = ({sex, ses}) => [sex, ses].join("--")
 
-  const stakedProbabilities = {}
+  const stackedProbabilities = {}
 
   dataset.forEach(startingPoint => {
     const key = getStatusKey(startingPoint)
-    let stakedProbabilities = 0
-    stakedProbabilities[key] = educationNames.map((education, i) => {
-      stakedProbabilities += (startingPoint[education] / 100) 
+    let stackedProbabilities = 0
+    stackedProbabilities[key] = educationNames.map((education, i) => {
+      stackedProbabilities += (startingPoint[education] / 100) 
       if (i == educationNames.length - 1) {
         // account for rounding error
         return 1
       } else {
-        return stakedProbabilities
+        return stackedProbabilities
       }
     })
   }) 
@@ -48,13 +48,19 @@ async function drawChart() {
       ses: sesNames[ses],
     })
     const probabilities = stackedProbabilities[statusKey]
+    const education = d3.bisect(probabilities, Math.random())
+
 
     return {
       sex,
       ses,
-      education: "?"
+      education,
     }
   }
+
+  console.log(generatePerson()) 
+  console.log(generatePerson()) 
+  console.log(generatePerson())
 
   // 2. Create chart dimensions
 
