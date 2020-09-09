@@ -2932,3 +2932,14 @@ function generatePerson(){
     }
   }
 ```
+
+### Day 156：Animated Sankey - part 7
+
+生成scale。
+
+```
+  const xScale = d3.scaleLinear()
+    .domain([0, 1])
+    .range([0, dimensions.boundedWidth])
+    .clamp(true)
+```

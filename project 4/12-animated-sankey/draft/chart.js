@@ -40,6 +40,8 @@ async function drawChart() {
     })
   }) 
 
+console.log(stackedProbabilities)
+
   function generatePerson(){
     const sex = getRandomValue(sexIds)
     const ses = getRandomValue(sesIds)
