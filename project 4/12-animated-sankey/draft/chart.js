@@ -40,8 +40,6 @@ async function drawChart() {
     })
   }) 
 
-console.log(stackedProbabilities)
-
   function generatePerson(){
     const sex = getRandomValue(sexIds)
     const ses = getRandomValue(sesIds)
@@ -51,8 +49,6 @@ console.log(stackedProbabilities)
     })
     const probabilities = stackedProbabilities[statusKey]
     const education = d3.bisect(probabilities, Math.random())
-
-
     return {
       sex,
       ses,
@@ -80,6 +76,7 @@ console.log(stackedProbabilities)
       left: 120,
     },
   }
+
   dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right
   dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom
 
@@ -94,7 +91,14 @@ console.log(stackedProbabilities)
       .style("transform", `translate(${dimensions.margin.left}px, ${dimensions.margin.top}px)`)
 
   // 4. Create scales
+  const xScale = d3.scaleLinear()
+    .domain([0, 1])
+    .range([0, dimensions.boundedWidth])
+    .clamp(true)
 
+  const startYScale = d3.scaleLinear()
+    .domain([sesIds.length, -1])
+    .range([0, dimensions.boundedHeight])
 
   // 5. Draw data
 

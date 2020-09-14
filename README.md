@@ -2935,11 +2935,19 @@ function generatePerson(){
 
 ### Day 156：Animated Sankey - part 7
 
-生成scale。
+生成x的scale。
 
 ```
   const xScale = d3.scaleLinear()
     .domain([0, 1])
     .range([0, dimensions.boundedWidth])
     .clamp(true)
+```
+
+### Day 157：Animated Sankey - part 8
+
+```
+  const startYScale = d3.scaleLinear()
+    .domain([sesIds.length, -1])
+    .range([0, dimensions.boundedHeight])
 ```
